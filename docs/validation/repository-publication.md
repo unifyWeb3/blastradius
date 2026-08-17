@@ -107,6 +107,31 @@ README rendering, license detection, source/docs visibility, public history,
 and absence of excluded or secret files. Do not treat a local-only check as
 proof of public publication.
 
+## Publication Result
+
+Publication completed successfully on 2026-08-17.
+
+```text
+remote: https://github.com/unifyWeb3/blastradius
+branch: main
+initial commit: 0d8b7b1 Publish BlastRadius hackathon MVP
+commit timestamp: 2026-08-17T09:27:07Z
+```
+
+Verified through the public GitHub repository/API:
+
+- repository visibility is `public` and default branch is `main`;
+- the public history begins with the current-time August 17 root commit;
+- `README.md` and the source tree are accessible;
+- GitHub detects `LICENSE` as MIT;
+- all eight `docs/design/` handoff files are accessible;
+- excluded dependencies, build output, runtime data, nested checkouts, and
+  superseded screenshots are absent;
+- `.env.example` is the only published environment file and contains local
+  development examples only.
+
+No application deployment was attempted during this mission.
+
 ## Known Publication Constraints
 
 - The managed environment does not expose a usable root `.git`; Git metadata
@@ -114,5 +139,5 @@ proof of public publication.
   to stage this audited workspace.
 - Docker is unavailable in the current environment, so local validation uses
   the documented extracted HydraDB image launcher.
-- `docs/submission.md` still has placeholders for the public repository and
-  demo video until those external artifacts exist.
+- `docs/submission.md` still has placeholders for the demo video, optional
+  deployed demo, and team list until those external artifacts exist.

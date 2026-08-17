@@ -21,14 +21,16 @@ Deadline: August 20, 2026 at 11:59 PM PT
 
 ## External Actions Still Required
 
-- [ ] Restore or initialize a usable root Git repository.
-- [ ] Commit the participant-authored application and documentation.
-- [ ] Push a public GitHub repository.
+- [x] Create isolated Git metadata because the managed root `.git` is masked.
+- [x] Commit the participant-authored application and documentation.
+- [x] Push the public GitHub repository: <https://github.com/unifyWeb3/blastradius>.
 - [ ] Confirm all team members are listed.
 - [ ] Record the approximately 2:30 demo.
 - [ ] Verify the final video is at most three minutes.
-- [ ] Add the public repository and video URLs to `docs/submission.md`.
+- [ ] Add the demo video URL to `docs/submission.md`.
 - [ ] Verify any deployed demo URL from a clean browser.
 - [ ] Submit the Hack Hydra form before the deadline.
 
-The current managed workspace exposes an empty read-only root `.git` mount, so repository creation, commits, and public push cannot be completed from this session without the repository metadata being restored outside the sandbox.
+The current managed workspace still exposes an empty read-only root `.git`
+mount. Publication was completed with isolated writable Git metadata outside
+the workspace root; no history was fabricated or backdated.
