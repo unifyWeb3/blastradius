@@ -1,0 +1,38 @@
+{
+  "name": "pattern_match",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "pattern_match",
+    "query": "MATCH (a:Person {id: 10})-[:LINKS]->(b:Person)-[:LINKS]->(c:Person) RETURN a.name AS a, b.name AS b, c.name AS c",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 9.604,
+  "response": {
+    "query_id": "pattern_match",
+    "columns": [
+      "a",
+      "b",
+      "c"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Alice"
+        },
+        {
+          "type": "string",
+          "value": "Bob"
+        },
+        {
+          "type": "string",
+          "value": "Carol"
+        }
+      ]
+    ],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}

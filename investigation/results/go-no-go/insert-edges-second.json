@@ -1,0 +1,61 @@
+{
+  "name": "insert-edges-second",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-15-insert-edges-second",
+    "query": "UNWIND $rows AS row MATCH (s:DependencyNode {id: row.source}), (t:DependencyNode {id: row.target}) MERGE (s)-[r:DEPENDS_ON {id: row.relationship_vertex}]->(t) SET r.edge_key = row.edge_key, r.t_valid_start = row.t_valid_start, r.t_valid_end = row.t_valid_end",
+    "parameters": {
+      "rows": [
+        {
+          "relationship_vertex": 1101,
+          "edge_key": "app-a-x",
+          "source": 1001,
+          "target": 1002,
+          "t_valid_start": 20260801,
+          "t_valid_end": 20260820
+        },
+        {
+          "relationship_vertex": 1102,
+          "edge_key": "x-y",
+          "source": 1002,
+          "target": 1003,
+          "t_valid_start": 20260802,
+          "t_valid_end": 20260820
+        },
+        {
+          "relationship_vertex": 1103,
+          "edge_key": "app-b-q",
+          "source": 1004,
+          "target": 1005,
+          "t_valid_start": 20260803,
+          "t_valid_end": 20260820
+        },
+        {
+          "relationship_vertex": 1104,
+          "edge_key": "q-y",
+          "source": 1005,
+          "target": 1003,
+          "t_valid_start": 20260804,
+          "t_valid_end": 20260820
+        },
+        {
+          "relationship_vertex": 1105,
+          "edge_key": "y-z",
+          "source": 1003,
+          "target": 1006,
+          "t_valid_start": 20260805,
+          "t_valid_end": 20260820
+        }
+      ]
+    }
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-15-insert-edges-second",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:6"
+  }
+}

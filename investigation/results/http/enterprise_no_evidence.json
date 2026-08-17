@@ -1,0 +1,21 @@
+{
+  "name": "enterprise_no_evidence",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "enterprise_no_evidence",
+    "query": "MATCH (c:Claim)-[:ABOUT]->(x:Project {name: 'Zeus'}) RETURN c.value AS claim",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 6.655,
+  "response": {
+    "query_id": "enterprise_no_evidence",
+    "columns": [
+      "claim"
+    ],
+    "rows": [],
+    "read_epoch": 10,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:10"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "enterprise_reasoning",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "enterprise_reasoning",
+    "query": "MATCH (p:Person {id: 100})-[:MEMBER_OF]->(t:Team)-[:WORKS_ON]->(x:Project) RETURN p.name AS person, t.name AS team, x.name AS project",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 14.881,
+  "response": {
+    "query_id": "enterprise_reasoning",
+    "columns": [
+      "person",
+      "team",
+      "project"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Alice"
+        },
+        {
+          "type": "string",
+          "value": "Data"
+        },
+        {
+          "type": "string",
+          "value": "Atlas"
+        }
+      ]
+    ],
+    "read_epoch": 10,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:10"
+  }
+}

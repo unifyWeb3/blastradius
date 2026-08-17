@@ -1,0 +1,21 @@
+{
+  "name": "no_evidence",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "no_evidence",
+    "query": "MATCH (p:Person {name: 'Nobody'})-[:LINKS]->(q) RETURN q.id AS id",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 17.528,
+  "response": {
+    "query_id": "no_evidence",
+    "columns": [
+      "id"
+    ],
+    "rows": [],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}

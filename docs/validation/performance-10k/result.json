@@ -1,0 +1,115 @@
+{
+  "timestamp": "2026-08-17T04:46:55.787Z",
+  "graph": {
+    "vertices": 10000,
+    "dependencyEdges": 9999,
+    "generatedAffectedRoots": 20,
+    "maxLength": 6,
+    "pathCount": 50,
+    "resultLimit": 100
+  },
+  "ingestion": {
+    "batchSize": 250,
+    "requests": 80,
+    "durationMs": 36032.421,
+    "rowsPerSecond": 555.028
+  },
+  "query": {
+    "samples": [
+      {
+        "durationMs": 1769.526,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 10.155,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 19.068,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 13.981,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 25.418,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 26.888,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 24.516,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 35.995,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 17.747,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 20.055,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 22.371,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 28.946,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 29.855,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 26.8,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 17.531,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 21.839,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 12.036,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 7.414,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 11.006,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 7.752,
+        "returnedPaths": 48
+      },
+      {
+        "durationMs": 28.264,
+        "returnedPaths": 48
+      }
+    ],
+    "coldMs": 1769.526,
+    "warmP50Ms": 21.839,
+    "warmP95Ms": 35.995,
+    "warmMinMs": 7.414,
+    "warmMaxMs": 35.995
+  },
+  "limitations": [
+    "Generated local single-node fixture, not an npm ecosystem crawl.",
+    "Returned paths are explicitly capped at the product query contract limits.",
+    "This measures client-observed HTTP duration, not server-only execution time."
+  ]
+}

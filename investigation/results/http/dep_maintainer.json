@@ -1,0 +1,38 @@
+{
+  "name": "dep_maintainer",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "dep_maintainer",
+    "query": "MATCH (m:Maintainer)-[:MAINTAINS]->(p:Package)<-[:VERSION_OF]-(v:Version {vulnerable: true}) RETURN m.name AS maintainer, p.name AS package, v.version AS version",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 4.807,
+  "response": {
+    "query_id": "dep_maintainer",
+    "columns": [
+      "maintainer",
+      "package",
+      "version"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Dana"
+        },
+        {
+          "type": "string",
+          "value": "lib-a"
+        },
+        {
+          "type": "string",
+          "value": "1.2.0"
+        }
+      ]
+    ],
+    "read_epoch": 15,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:15"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "mem_history",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "mem_history",
+    "query": "MATCH (m:Memory {subject: 'deploy'}) RETURN m.value AS value, m.valid_from AS valid_from, m.valid_to AS valid_to ORDER BY valid_from",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 11.454,
+  "response": {
+    "query_id": "mem_history",
+    "columns": [
+      "value",
+      "valid_from",
+      "valid_to"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Friday"
+        },
+        {
+          "type": "integer",
+          "value": 20260814
+        },
+        {
+          "type": "integer",
+          "value": 20260815
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "Monday"
+        },
+        {
+          "type": "integer",
+          "value": 20260816
+        },
+        {
+          "type": "integer",
+          "value": 0
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "Tuesday"
+        },
+        {
+          "type": "integer",
+          "value": 20260816
+        },
+        {
+          "type": "integer",
+          "value": 0
+        }
+      ]
+    ],
+    "read_epoch": 20,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+  }
+}

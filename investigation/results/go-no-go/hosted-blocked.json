@@ -1,0 +1,98 @@
+{
+  "status": "blocked",
+  "reason": "HYDRADB_API_KEY/HYDRA_DB_API_KEY and HYDRADB_DATABASE/HYDRA_DB_DATABASE are required",
+  "base": "https://api.hydradb.com",
+  "source_id": "hack-hydra-go-no-go-01",
+  "payload": {
+    "hack-hydra-go-no-go-01": {
+      "entities": {
+        "app_a": {
+          "name": "App A",
+          "type": "APPLICATION",
+          "namespace": "supply-chain",
+          "identifier": "app:a"
+        },
+        "app_b": {
+          "name": "App B",
+          "type": "APPLICATION",
+          "namespace": "supply-chain",
+          "identifier": "app:b"
+        },
+        "x": {
+          "name": "Package X@1.2.3",
+          "type": "PACKAGE_VERSION",
+          "namespace": "npm",
+          "identifier": "pkg:x@1.2.3"
+        },
+        "q": {
+          "name": "Package Q@2.3.4",
+          "type": "PACKAGE_VERSION",
+          "namespace": "npm",
+          "identifier": "pkg:q@2.3.4"
+        },
+        "y": {
+          "name": "Package Y@4.5.6",
+          "type": "PACKAGE_VERSION",
+          "namespace": "npm",
+          "identifier": "pkg:y@4.5.6"
+        },
+        "z": {
+          "name": "Package Z@7.8.9",
+          "type": "PACKAGE_VERSION",
+          "namespace": "npm",
+          "identifier": "pkg:z@7.8.9"
+        },
+        "compromised": {
+          "name": "Compromised",
+          "type": "SECURITY_STATUS",
+          "namespace": "supply-chain",
+          "identifier": "status:compromised"
+        }
+      },
+      "relations": [
+        {
+          "source": "app_a",
+          "target": "x",
+          "predicate": "DEPENDS_ON",
+          "context": "App A depends on Package X@1.2.3",
+          "temporal_details": "2026-08-01/2026-08-20"
+        },
+        {
+          "source": "x",
+          "target": "y",
+          "predicate": "DEPENDS_ON",
+          "context": "Package X@1.2.3 depends on Package Y@4.5.6",
+          "temporal_details": "2026-08-02/2026-08-20"
+        },
+        {
+          "source": "app_b",
+          "target": "q",
+          "predicate": "DEPENDS_ON",
+          "context": "App B depends on Package Q@2.3.4",
+          "temporal_details": "2026-08-03/2026-08-20"
+        },
+        {
+          "source": "q",
+          "target": "y",
+          "predicate": "DEPENDS_ON",
+          "context": "Package Q@2.3.4 depends on Package Y@4.5.6",
+          "temporal_details": "2026-08-04/2026-08-20"
+        },
+        {
+          "source": "y",
+          "target": "z",
+          "predicate": "DEPENDS_ON",
+          "context": "Package Y@4.5.6 depends on Package Z@7.8.9",
+          "temporal_details": "2026-08-05/2026-08-20"
+        },
+        {
+          "source": "y",
+          "target": "compromised",
+          "predicate": "HAS_SECURITY_STATUS",
+          "context": "Package Y@4.5.6 was compromised.",
+          "temporal_details": "2026-08-06/2026-08-12"
+        }
+      ]
+    }
+  }
+}

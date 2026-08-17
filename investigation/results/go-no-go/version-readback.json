@@ -1,0 +1,42 @@
+{
+  "name": "version-readback",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-7-version-readback",
+    "query": "MATCH (v:DependencyNode {dep_id: 'pkg:y@4.5.6'}) RETURN v.kind AS kind, v.name AS name, v.version AS version, v.compromised AS compromised",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-7-version-readback",
+    "columns": [
+      "kind",
+      "name",
+      "version",
+      "compromised"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "package_version"
+        },
+        {
+          "type": "string",
+          "value": "Package Y"
+        },
+        {
+          "type": "string",
+          "value": "4.5.6"
+        },
+        {
+          "type": "boolean",
+          "value": true
+        }
+      ]
+    ],
+    "read_epoch": 5,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:5"
+  }
+}

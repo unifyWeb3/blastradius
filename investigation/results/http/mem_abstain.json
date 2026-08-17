@@ -1,0 +1,21 @@
+{
+  "name": "mem_abstain",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "mem_abstain",
+    "query": "MATCH (m:Memory {subject: 'budget'}) RETURN m.value AS value",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 3.195,
+  "response": {
+    "query_id": "mem_abstain",
+    "columns": [
+      "value"
+    ],
+    "rows": [],
+    "read_epoch": 20,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+  }
+}

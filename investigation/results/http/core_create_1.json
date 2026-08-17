@@ -1,0 +1,19 @@
+{
+  "name": "core_create_1",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "core_create_1",
+    "query": "CREATE (a:Person {id: 10, name: 'Alice', team: 'Core'})-[:LINKS {kind: 'knows', since: 2024, confidence: 0.9}]->(b:Person {id: 11, name: 'Bob', team: 'Data'})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 896.324,
+  "response": {
+    "query_id": "core_create_1",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:2"
+  }
+}

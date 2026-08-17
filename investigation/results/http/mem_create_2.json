@@ -1,0 +1,19 @@
+{
+  "name": "mem_create_2",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "mem_create_2",
+    "query": "CREATE (s2:Session {id: 302, started_at: 20260816})-[:ASSERTS {confidence: 0.9}]->(m2:Memory {id: 303, subject: 'deploy', value: 'Monday', valid_from: 20260816, valid_to: 0, confidence: 0.9})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 32.115,
+  "response": {
+    "query_id": "mem_create_2",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:17"
+  }
+}

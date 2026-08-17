@@ -1,0 +1,42 @@
+{
+  "name": "security-temporal-readback-first",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-10-security-temporal-readback-first",
+    "query": "MATCH (v:DependencyNode {dep_id: 'pkg:y@4.5.6'})-[r:COMPROMISED_DURING]->(s:DependencyNode {dep_id: 'status:compromised'}) RETURN v.dep_id AS package, s.name AS status, r.t_valid_start AS start, r.t_valid_end AS end",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-10-security-temporal-readback-first",
+    "columns": [
+      "package",
+      "status",
+      "start",
+      "end"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "pkg:y@4.5.6"
+        },
+        {
+          "type": "string",
+          "value": "Compromised"
+        },
+        {
+          "type": "integer",
+          "value": 20260806
+        },
+        {
+          "type": "integer",
+          "value": 20260812
+        }
+      ]
+    ],
+    "read_epoch": 5,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:5"
+  }
+}

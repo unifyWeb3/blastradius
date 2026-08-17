@@ -1,0 +1,31 @@
+{
+  "name": "optional",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "optional",
+    "query": "OPTIONAL MATCH (p:Person {id: 10})-[:MISSING]->(q) RETURN p.id AS source, q.id AS target",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 7.797,
+  "response": {
+    "query_id": "optional",
+    "columns": [
+      "source",
+      "target"
+    ],
+    "rows": [
+      [
+        {
+          "type": "null"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    ],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}

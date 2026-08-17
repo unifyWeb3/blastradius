@@ -1,0 +1,17 @@
+{
+  "name": "reject_return_star",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "reject_return_star",
+    "query": "MATCH (a {id: 10}) RETURN *",
+    "parameters": {}
+  },
+  "http_status": 400,
+  "duration_ms": 2.253,
+  "response": {
+    "error": {
+      "code": "invalid_request",
+      "message": "OpenCypher query is not supported yet: RETURN * is not executable in Query engine"
+    }
+  }
+}

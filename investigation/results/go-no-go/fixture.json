@@ -1,0 +1,110 @@
+{
+  "applications": [
+    {
+      "vertex": 1001,
+      "kind": "application",
+      "dep_id": "app:a",
+      "name": "App A"
+    },
+    {
+      "vertex": 1004,
+      "kind": "application",
+      "dep_id": "app:b",
+      "name": "App B"
+    }
+  ],
+  "packages": [
+    {
+      "vertex": 1002,
+      "kind": "package_version",
+      "dep_id": "pkg:x@1.2.3",
+      "name": "Package X",
+      "version": "1.2.3",
+      "compromised": false
+    },
+    {
+      "vertex": 1005,
+      "kind": "package_version",
+      "dep_id": "pkg:q@2.3.4",
+      "name": "Package Q",
+      "version": "2.3.4",
+      "compromised": false
+    },
+    {
+      "vertex": 1003,
+      "kind": "package_version",
+      "dep_id": "pkg:y@4.5.6",
+      "name": "Package Y",
+      "version": "4.5.6",
+      "compromised": true
+    },
+    {
+      "vertex": 1006,
+      "kind": "package_version",
+      "dep_id": "pkg:z@7.8.9",
+      "name": "Package Z",
+      "version": "7.8.9",
+      "compromised": false
+    }
+  ],
+  "statuses": [
+    {
+      "vertex": 1007,
+      "kind": "security_status",
+      "dep_id": "status:compromised",
+      "name": "Compromised"
+    }
+  ],
+  "edges": [
+    {
+      "relationship_vertex": 1101,
+      "edge_key": "app-a-x",
+      "source": 1001,
+      "target": 1002,
+      "t_valid_start": 20260801,
+      "t_valid_end": 20260820
+    },
+    {
+      "relationship_vertex": 1102,
+      "edge_key": "x-y",
+      "source": 1002,
+      "target": 1003,
+      "t_valid_start": 20260802,
+      "t_valid_end": 20260820
+    },
+    {
+      "relationship_vertex": 1103,
+      "edge_key": "app-b-q",
+      "source": 1004,
+      "target": 1005,
+      "t_valid_start": 20260803,
+      "t_valid_end": 20260820
+    },
+    {
+      "relationship_vertex": 1104,
+      "edge_key": "q-y",
+      "source": 1005,
+      "target": 1003,
+      "t_valid_start": 20260804,
+      "t_valid_end": 20260820
+    },
+    {
+      "relationship_vertex": 1105,
+      "edge_key": "y-z",
+      "source": 1003,
+      "target": 1006,
+      "t_valid_start": 20260805,
+      "t_valid_end": 20260820
+    }
+  ],
+  "security_edges": [
+    {
+      "relationship_vertex": 1201,
+      "edge_key": "y-compromised",
+      "source": 1003,
+      "target": 1007,
+      "t_valid_start": 20260806,
+      "t_valid_end": 20260812
+    }
+  ]
+}

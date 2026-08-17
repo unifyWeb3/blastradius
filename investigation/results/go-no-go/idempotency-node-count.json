@@ -1,0 +1,27 @@
+{
+  "name": "idempotency-node-count",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-17-idempotency-node-count",
+    "query": "MATCH (n:DependencyNode) RETURN count(*) AS dependency_nodes",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-17-idempotency-node-count",
+    "columns": [
+      "dependency_nodes"
+    ],
+    "rows": [
+      [
+        {
+          "type": "integer",
+          "value": 7
+        }
+      ]
+    ],
+    "read_epoch": 7,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:7"
+  }
+}

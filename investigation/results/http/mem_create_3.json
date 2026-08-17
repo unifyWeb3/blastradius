@@ -1,0 +1,19 @@
+{
+  "name": "mem_create_3",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "mem_create_3",
+    "query": "CREATE (s3:Session {id: 304, started_at: 20260816})-[:ASSERTS {confidence: 0.4}]->(m3:Memory {id: 305, subject: 'deploy', value: 'Tuesday', valid_from: 20260816, valid_to: 0, confidence: 0.4})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 20.699,
+  "response": {
+    "query_id": "mem_create_3",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:18"
+  }
+}

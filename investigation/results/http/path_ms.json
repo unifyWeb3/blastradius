@@ -1,0 +1,215 @@
+{
+  "name": "path_ms",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "path_ms",
+    "query": "CALL algo.MSpaths({sourceLabel: 'Person', sourceProperty: 'name', sourceValues: ['Alice', 'Bob'], targetLabel: 'Project', targetProperty: 'name', targetValues: ['Hydra'], pairwise: false, relTypes: ['LINKS'], relDirection: 'outgoing', maxLen: 3, pathCount: 2}) YIELD path RETURN path",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 18.507,
+  "response": {
+    "query_id": "path_ms",
+    "columns": [
+      "path"
+    ],
+    "rows": [
+      [
+        {
+          "type": "path",
+          "value": {
+            "nodes": [
+              {
+                "id": 10,
+                "labels": [
+                  "Person"
+                ],
+                "properties": {
+                  "name": {
+                    "String": "Alice"
+                  },
+                  "team": {
+                    "String": "Core"
+                  }
+                }
+              },
+              {
+                "id": 11,
+                "labels": [
+                  "Person"
+                ],
+                "properties": {
+                  "name": {
+                    "String": "Bob"
+                  },
+                  "team": {
+                    "String": "Data"
+                  }
+                }
+              },
+              {
+                "id": 12,
+                "labels": [
+                  "Person"
+                ],
+                "properties": {
+                  "name": {
+                    "String": "Carol"
+                  },
+                  "team": {
+                    "String": "Platform"
+                  }
+                }
+              },
+              {
+                "id": 13,
+                "labels": [
+                  "Project"
+                ],
+                "properties": {
+                  "name": {
+                    "String": "Hydra"
+                  },
+                  "status": {
+                    "String": "active"
+                  }
+                }
+              }
+            ],
+            "relationships": [
+              {
+                "id": 2,
+                "edge_type": "LINKS",
+                "src": 10,
+                "dst": 11,
+                "properties": {
+                  "confidence": {
+                    "Float": 0.9
+                  },
+                  "kind": {
+                    "String": "knows"
+                  },
+                  "since": {
+                    "Integer": 2024
+                  }
+                }
+              },
+              {
+                "id": 3,
+                "edge_type": "LINKS",
+                "src": 11,
+                "dst": 12,
+                "properties": {
+                  "kind": {
+                    "String": "reports"
+                  },
+                  "since": {
+                    "Integer": 2023
+                  }
+                }
+              },
+              {
+                "id": 4,
+                "edge_type": "LINKS",
+                "src": 12,
+                "dst": 13,
+                "properties": {
+                  "kind": {
+                    "String": "owns"
+                  },
+                  "since": {
+                    "Integer": 2022
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "type": "path",
+          "value": {
+            "nodes": [
+              {
+                "id": 11,
+                "labels": [
+                  "Person"
+                ],
+                "properties": {
+                  "name": {
+                    "String": "Bob"
+                  },
+                  "team": {
+                    "String": "Data"
+                  }
+                }
+              },
+              {
+                "id": 12,
+                "labels": [
+                  "Person"
+                ],
+                "properties": {
+                  "name": {
+                    "String": "Carol"
+                  },
+                  "team": {
+                    "String": "Platform"
+                  }
+                }
+              },
+              {
+                "id": 13,
+                "labels": [
+                  "Project"
+                ],
+                "properties": {
+                  "name": {
+                    "String": "Hydra"
+                  },
+                  "status": {
+                    "String": "active"
+                  }
+                }
+              }
+            ],
+            "relationships": [
+              {
+                "id": 3,
+                "edge_type": "LINKS",
+                "src": 11,
+                "dst": 12,
+                "properties": {
+                  "kind": {
+                    "String": "reports"
+                  },
+                  "since": {
+                    "Integer": 2023
+                  }
+                }
+              },
+              {
+                "id": 4,
+                "edge_type": "LINKS",
+                "src": 12,
+                "dst": 13,
+                "properties": {
+                  "kind": {
+                    "String": "owns"
+                  },
+                  "since": {
+                    "Integer": 2022
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}

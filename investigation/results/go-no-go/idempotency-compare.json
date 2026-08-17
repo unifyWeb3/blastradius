@@ -1,0 +1,228 @@
+{
+  "identical_rows_after_second_ingest": true,
+  "identical_security_rows_after_second_ingest": true,
+  "first_rows": [
+    [
+      {
+        "type": "string",
+        "value": "app:a"
+      },
+      {
+        "type": "string",
+        "value": "pkg:x@1.2.3"
+      },
+      {
+        "type": "string",
+        "value": "app-a-x"
+      },
+      {
+        "type": "integer",
+        "value": 20260801
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "app:b"
+      },
+      {
+        "type": "string",
+        "value": "pkg:q@2.3.4"
+      },
+      {
+        "type": "string",
+        "value": "app-b-q"
+      },
+      {
+        "type": "integer",
+        "value": 20260803
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "pkg:q@2.3.4"
+      },
+      {
+        "type": "string",
+        "value": "pkg:y@4.5.6"
+      },
+      {
+        "type": "string",
+        "value": "q-y"
+      },
+      {
+        "type": "integer",
+        "value": 20260804
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "pkg:x@1.2.3"
+      },
+      {
+        "type": "string",
+        "value": "pkg:y@4.5.6"
+      },
+      {
+        "type": "string",
+        "value": "x-y"
+      },
+      {
+        "type": "integer",
+        "value": 20260802
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "pkg:y@4.5.6"
+      },
+      {
+        "type": "string",
+        "value": "pkg:z@7.8.9"
+      },
+      {
+        "type": "string",
+        "value": "y-z"
+      },
+      {
+        "type": "integer",
+        "value": 20260805
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ]
+  ],
+  "second_rows": [
+    [
+      {
+        "type": "string",
+        "value": "app:a"
+      },
+      {
+        "type": "string",
+        "value": "pkg:x@1.2.3"
+      },
+      {
+        "type": "string",
+        "value": "app-a-x"
+      },
+      {
+        "type": "integer",
+        "value": 20260801
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "app:b"
+      },
+      {
+        "type": "string",
+        "value": "pkg:q@2.3.4"
+      },
+      {
+        "type": "string",
+        "value": "app-b-q"
+      },
+      {
+        "type": "integer",
+        "value": 20260803
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "pkg:q@2.3.4"
+      },
+      {
+        "type": "string",
+        "value": "pkg:y@4.5.6"
+      },
+      {
+        "type": "string",
+        "value": "q-y"
+      },
+      {
+        "type": "integer",
+        "value": 20260804
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "pkg:x@1.2.3"
+      },
+      {
+        "type": "string",
+        "value": "pkg:y@4.5.6"
+      },
+      {
+        "type": "string",
+        "value": "x-y"
+      },
+      {
+        "type": "integer",
+        "value": 20260802
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ],
+    [
+      {
+        "type": "string",
+        "value": "pkg:y@4.5.6"
+      },
+      {
+        "type": "string",
+        "value": "pkg:z@7.8.9"
+      },
+      {
+        "type": "string",
+        "value": "y-z"
+      },
+      {
+        "type": "integer",
+        "value": 20260805
+      },
+      {
+        "type": "integer",
+        "value": 20260820
+      }
+    ]
+  ]
+}

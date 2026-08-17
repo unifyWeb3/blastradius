@@ -1,0 +1,651 @@
+{
+  "environment": {
+    "levels": [
+      100,
+      500,
+      2000
+    ],
+    "chunk_size": 250
+  },
+  "setup": {
+    "duration_ms": 747.504,
+    "requests": 2,
+    "vertices": 101,
+    "edges": 100
+  },
+  "levels": [
+    {
+      "leaves": 100,
+      "total_vertices": 201,
+      "total_edges": 200,
+      "ingestion": {
+        "added_vertices": 100,
+        "added_edges": 100,
+        "requests": 2,
+        "duration_ms": 119.713,
+        "rows_per_second": 1670.7
+      },
+      "measurements": [
+        {
+          "name": "id_lookup_100",
+          "cold_ms": 33.132,
+          "warm_ms": [
+            17.433,
+            13.34,
+            14.221,
+            19.393,
+            21.449
+          ],
+          "warm_p50_ms": 17.433,
+          "warm_p95_ms": 21.449,
+          "response": {
+            "query_id": "id_lookup_100_5",
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "string",
+                  "value": "perf-app-99"
+                }
+              ]
+            ],
+            "read_epoch": 4,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+          }
+        },
+        {
+          "name": "property_lookup_100",
+          "cold_ms": 17.832,
+          "warm_ms": [
+            9.854,
+            4.418,
+            28.645,
+            18.836,
+            3.897
+          ],
+          "warm_p50_ms": 9.854,
+          "warm_p95_ms": 28.645,
+          "response": {
+            "query_id": "property_lookup_100_5",
+            "columns": [
+              "id"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "vertex_id",
+                  "value": 29200099
+                }
+              ]
+            ],
+            "read_epoch": 4,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+          }
+        },
+        {
+          "name": "reverse_one_hop_100",
+          "cold_ms": 56.302,
+          "warm_ms": [
+            17.007,
+            16.763,
+            17.243,
+            19.624,
+            24.166
+          ],
+          "warm_p50_ms": 17.243,
+          "warm_p95_ms": 24.166,
+          "response": {
+            "query_id": "reverse_one_hop_100_5",
+            "columns": [
+              "total"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "integer",
+                  "value": 100
+                }
+              ]
+            ],
+            "read_epoch": 4,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+          }
+        },
+        {
+          "name": "reverse_two_hop_native_path_100",
+          "cold_ms": 696.366,
+          "warm_ms": [
+            9.574,
+            15.153,
+            4.385,
+            13.143,
+            5.528
+          ],
+          "warm_p50_ms": 9.574,
+          "warm_p95_ms": 15.153,
+          "response": {
+            "query_id": "reverse_two_hop_native_path_100_5",
+            "columns": [
+              "path"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "path",
+                  "value": {
+                    "nodes": [
+                      {
+                        "id": 29100000,
+                        "labels": [
+                          "PerfNode"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "String": "target"
+                          },
+                          "name": {
+                            "String": "perf-vulnerable"
+                          }
+                        }
+                      },
+                      {
+                        "id": 29101000,
+                        "labels": [
+                          "PerfNode"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "String": "middle"
+                          },
+                          "name": {
+                            "String": "perf-middle-0"
+                          }
+                        }
+                      }
+                    ],
+                    "relationships": [
+                      {
+                        "id": 1,
+                        "edge_type": "PERF_DEPENDS",
+                        "src": 29101000,
+                        "dst": 29100000,
+                        "properties": {
+                          "id": {
+                            "Integer": 39000000
+                          },
+                          "source": {
+                            "String": "generated"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            ],
+            "read_epoch": 4,
+            "next_cursor": 6,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+          }
+        },
+        {
+          "name": "forward_two_hop_100",
+          "cold_ms": 20.727,
+          "warm_ms": [
+            6.774,
+            7.351,
+            6.353,
+            6.008,
+            12.955
+          ],
+          "warm_p50_ms": 6.774,
+          "warm_p95_ms": 12.955,
+          "response": {
+            "query_id": "forward_two_hop_100_5",
+            "columns": [
+              "total"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "integer",
+                  "value": 2
+                }
+              ]
+            ],
+            "read_epoch": 4,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+          }
+        }
+      ]
+    },
+    {
+      "leaves": 500,
+      "total_vertices": 601,
+      "total_edges": 600,
+      "ingestion": {
+        "added_vertices": 400,
+        "added_edges": 400,
+        "requests": 4,
+        "duration_ms": 297.656,
+        "rows_per_second": 2687.7
+      },
+      "measurements": [
+        {
+          "name": "id_lookup_500",
+          "cold_ms": 10.441,
+          "warm_ms": [
+            4.113,
+            10.071,
+            3.921,
+            13.709,
+            5.218
+          ],
+          "warm_p50_ms": 5.218,
+          "warm_p95_ms": 13.709,
+          "response": {
+            "query_id": "id_lookup_500_5",
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "string",
+                  "value": "perf-app-499"
+                }
+              ]
+            ],
+            "read_epoch": 8,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:8"
+          }
+        },
+        {
+          "name": "property_lookup_500",
+          "cold_ms": 9.13,
+          "warm_ms": [
+            4.45,
+            7.352,
+            8.604,
+            10.533,
+            7.682
+          ],
+          "warm_p50_ms": 7.682,
+          "warm_p95_ms": 10.533,
+          "response": {
+            "query_id": "property_lookup_500_5",
+            "columns": [
+              "id"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "vertex_id",
+                  "value": 29200499
+                }
+              ]
+            ],
+            "read_epoch": 8,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:8"
+          }
+        },
+        {
+          "name": "reverse_one_hop_500",
+          "cold_ms": 45.024,
+          "warm_ms": [
+            13.712,
+            20.665,
+            25.419,
+            26.884,
+            16.612
+          ],
+          "warm_p50_ms": 20.665,
+          "warm_p95_ms": 26.884,
+          "response": {
+            "query_id": "reverse_one_hop_500_5",
+            "columns": [
+              "total"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "integer",
+                  "value": 100
+                }
+              ]
+            ],
+            "read_epoch": 8,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:8"
+          }
+        },
+        {
+          "name": "reverse_two_hop_native_path_500",
+          "cold_ms": 213.036,
+          "warm_ms": [
+            7.94,
+            9.791,
+            29.498,
+            24.446,
+            11.666
+          ],
+          "warm_p50_ms": 11.666,
+          "warm_p95_ms": 29.498,
+          "response": {
+            "query_id": "reverse_two_hop_native_path_500_5",
+            "columns": [
+              "path"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "path",
+                  "value": {
+                    "nodes": [
+                      {
+                        "id": 29100000,
+                        "labels": [
+                          "PerfNode"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "String": "target"
+                          },
+                          "name": {
+                            "String": "perf-vulnerable"
+                          }
+                        }
+                      },
+                      {
+                        "id": 29101000,
+                        "labels": [
+                          "PerfNode"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "String": "middle"
+                          },
+                          "name": {
+                            "String": "perf-middle-0"
+                          }
+                        }
+                      }
+                    ],
+                    "relationships": [
+                      {
+                        "id": 1,
+                        "edge_type": "PERF_DEPENDS",
+                        "src": 29101000,
+                        "dst": 29100000,
+                        "properties": {
+                          "id": {
+                            "Integer": 39000000
+                          },
+                          "source": {
+                            "String": "generated"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            ],
+            "read_epoch": 8,
+            "next_cursor": 12,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:8"
+          }
+        },
+        {
+          "name": "forward_two_hop_500",
+          "cold_ms": 5.609,
+          "warm_ms": [
+            10.463,
+            21.677,
+            13.471,
+            3.298,
+            4.466
+          ],
+          "warm_p50_ms": 10.463,
+          "warm_p95_ms": 21.677,
+          "response": {
+            "query_id": "forward_two_hop_500_5",
+            "columns": [
+              "total"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "integer",
+                  "value": 2
+                }
+              ]
+            ],
+            "read_epoch": 8,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:8"
+          }
+        }
+      ]
+    },
+    {
+      "leaves": 2000,
+      "total_vertices": 2101,
+      "total_edges": 2100,
+      "ingestion": {
+        "added_vertices": 1500,
+        "added_edges": 1500,
+        "requests": 12,
+        "duration_ms": 1248.391,
+        "rows_per_second": 2403.1
+      },
+      "measurements": [
+        {
+          "name": "id_lookup_2000",
+          "cold_ms": 3.971,
+          "warm_ms": [
+            28.728,
+            14.344,
+            13.834,
+            5.152,
+            13.763
+          ],
+          "warm_p50_ms": 13.834,
+          "warm_p95_ms": 28.728,
+          "response": {
+            "query_id": "id_lookup_2000_5",
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "string",
+                  "value": "perf-app-1999"
+                }
+              ]
+            ],
+            "read_epoch": 20,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+          }
+        },
+        {
+          "name": "property_lookup_2000",
+          "cold_ms": 23.2,
+          "warm_ms": [
+            6.191,
+            13.961,
+            11.861,
+            17.052,
+            20.997
+          ],
+          "warm_p50_ms": 13.961,
+          "warm_p95_ms": 20.997,
+          "response": {
+            "query_id": "property_lookup_2000_5",
+            "columns": [
+              "id"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "vertex_id",
+                  "value": 29201999
+                }
+              ]
+            ],
+            "read_epoch": 20,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+          }
+        },
+        {
+          "name": "reverse_one_hop_2000",
+          "cold_ms": 40.29,
+          "warm_ms": [
+            18.652,
+            18.721,
+            17.316,
+            27.412,
+            20.805
+          ],
+          "warm_p50_ms": 18.721,
+          "warm_p95_ms": 27.412,
+          "response": {
+            "query_id": "reverse_one_hop_2000_5",
+            "columns": [
+              "total"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "integer",
+                  "value": 100
+                }
+              ]
+            ],
+            "read_epoch": 20,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+          }
+        },
+        {
+          "name": "reverse_two_hop_native_path_2000",
+          "cold_ms": 924.187,
+          "warm_ms": [
+            22.673,
+            49.969,
+            78.575,
+            22.297,
+            55.614
+          ],
+          "warm_p50_ms": 49.969,
+          "warm_p95_ms": 78.575,
+          "response": {
+            "query_id": "reverse_two_hop_native_path_2000_5",
+            "columns": [
+              "path"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "path",
+                  "value": {
+                    "nodes": [
+                      {
+                        "id": 29100000,
+                        "labels": [
+                          "PerfNode"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "String": "target"
+                          },
+                          "name": {
+                            "String": "perf-vulnerable"
+                          }
+                        }
+                      },
+                      {
+                        "id": 29101000,
+                        "labels": [
+                          "PerfNode"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "String": "middle"
+                          },
+                          "name": {
+                            "String": "perf-middle-0"
+                          }
+                        }
+                      }
+                    ],
+                    "relationships": [
+                      {
+                        "id": 1,
+                        "edge_type": "PERF_DEPENDS",
+                        "src": 29101000,
+                        "dst": 29100000,
+                        "properties": {
+                          "id": {
+                            "Integer": 39000000
+                          },
+                          "source": {
+                            "String": "generated"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            ],
+            "read_epoch": 20,
+            "next_cursor": 18,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+          }
+        },
+        {
+          "name": "forward_two_hop_2000",
+          "cold_ms": 6.771,
+          "warm_ms": [
+            17.661,
+            22.87,
+            11.703,
+            16.695,
+            22.733
+          ],
+          "warm_p50_ms": 17.661,
+          "warm_p95_ms": 22.87,
+          "response": {
+            "query_id": "forward_two_hop_2000_5",
+            "columns": [
+              "total"
+            ],
+            "rows": [
+              [
+                {
+                  "type": "integer",
+                  "value": 2
+                }
+              ]
+            ],
+            "read_epoch": 20,
+            "next_cursor": null,
+            "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+          }
+        }
+      ]
+    }
+  ]
+}

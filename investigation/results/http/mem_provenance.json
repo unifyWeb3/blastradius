@@ -1,0 +1,66 @@
+{
+  "name": "mem_provenance",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "mem_provenance",
+    "query": "MATCH (s:Session)-[r:ASSERTS]->(m:Memory {subject: 'deploy'}) RETURN s.started_at AS session, m.value AS value, r.confidence AS confidence ORDER BY session",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 4.021,
+  "response": {
+    "query_id": "mem_provenance",
+    "columns": [
+      "session",
+      "value",
+      "confidence"
+    ],
+    "rows": [
+      [
+        {
+          "type": "integer",
+          "value": 20260814
+        },
+        {
+          "type": "string",
+          "value": "Friday"
+        },
+        {
+          "type": "float",
+          "value": 0.7
+        }
+      ],
+      [
+        {
+          "type": "integer",
+          "value": 20260816
+        },
+        {
+          "type": "string",
+          "value": "Monday"
+        },
+        {
+          "type": "float",
+          "value": 0.9
+        }
+      ],
+      [
+        {
+          "type": "integer",
+          "value": 20260816
+        },
+        {
+          "type": "string",
+          "value": "Tuesday"
+        },
+        {
+          "type": "float",
+          "value": 0.4
+        }
+      ]
+    ],
+    "read_epoch": 20,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+  }
+}

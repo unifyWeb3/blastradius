@@ -1,0 +1,43 @@
+{
+  "name": "mem_current",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "mem_current",
+    "query": "MATCH (m:Memory {subject: 'deploy'}) WHERE m.valid_to > 20260816 OR m.valid_to = 0 RETURN m.value AS value, m.confidence AS confidence ORDER BY confidence DESC",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 12.86,
+  "response": {
+    "query_id": "mem_current",
+    "columns": [
+      "value",
+      "confidence"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Monday"
+        },
+        {
+          "type": "float",
+          "value": 0.9
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "Tuesday"
+        },
+        {
+          "type": "float",
+          "value": 0.4
+        }
+      ]
+    ],
+    "read_epoch": 20,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:20"
+  }
+}

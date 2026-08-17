@@ -1,0 +1,28 @@
+{
+  "name": "guarded_newer_update",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "guarded_newer_update",
+    "query": "UNWIND $rows AS row MERGE (n {id: row.vertex}) SET n:TemporalEntity, n.value = row.value, n.updated_at = row.updated_at, n.created_at = row.created_at, n.__hydradb_update_if_newer_by = row.updated_at, n.__hydradb_create_only_created_at = row.created_at",
+    "parameters": {
+      "rows": [
+        {
+          "vertex": 350,
+          "value": "fresh",
+          "updated_at": 202608161000,
+          "created_at": 999999999999
+        }
+      ]
+    }
+  },
+  "http_status": 200,
+  "duration_ms": 25.062,
+  "response": {
+    "query_id": "guarded_newer_update",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:22"
+  }
+}

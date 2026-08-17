@@ -1,0 +1,33 @@
+{
+  "name": "enterprise_alias_resolution",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "enterprise_alias_resolution",
+    "query": "MATCH (a:Alias {value: 'A. Smith'})-[:ALIAS_OF]->(p:Person)-[:MEMBER_OF]->(t:Team) RETURN p.name AS canonical, t.name AS team",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 11.353,
+  "response": {
+    "query_id": "enterprise_alias_resolution",
+    "columns": [
+      "canonical",
+      "team"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Alice"
+        },
+        {
+          "type": "string",
+          "value": "Data"
+        }
+      ]
+    ],
+    "read_epoch": 10,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:10"
+  }
+}

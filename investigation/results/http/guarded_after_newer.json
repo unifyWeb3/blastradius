@@ -1,0 +1,38 @@
+{
+  "name": "guarded_after_newer",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "guarded_after_newer",
+    "query": "MATCH (n:TemporalEntity {id: 350}) RETURN n.value AS value, n.updated_at AS updated_at, n.created_at AS created_at",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 3.339,
+  "response": {
+    "query_id": "guarded_after_newer",
+    "columns": [
+      "value",
+      "updated_at",
+      "created_at"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "fresh"
+        },
+        {
+          "type": "integer",
+          "value": 202608161000
+        },
+        {
+          "type": "integer",
+          "value": 202608160900
+        }
+      ]
+    ],
+    "read_epoch": 22,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:22"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "predicate-readback",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-8-predicate-readback",
+    "query": "MATCH ()-[:DEPENDS_ON]->() RETURN count(*) AS dependency_edges",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-8-predicate-readback",
+    "columns": [
+      "dependency_edges"
+    ],
+    "rows": [
+      [
+        {
+          "type": "integer",
+          "value": 5
+        }
+      ]
+    ],
+    "read_epoch": 5,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:5"
+  }
+}

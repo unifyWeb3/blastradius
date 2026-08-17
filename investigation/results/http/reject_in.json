@@ -1,0 +1,17 @@
+{
+  "name": "reject_in",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "reject_in",
+    "query": "MATCH (a:Person) WHERE a.name IN ['Alice'] RETURN a.id AS id",
+    "parameters": {}
+  },
+  "http_status": 400,
+  "duration_ms": 12.816,
+  "response": {
+    "error": {
+      "code": "invalid_request",
+      "message": "OpenCypher query is not supported yet: WHERE currently supports boolean combinations of property comparisons"
+    }
+  }
+}

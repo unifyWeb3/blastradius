@@ -1,0 +1,69 @@
+{
+  "captured_at": "2026-08-16",
+  "repository": {
+    "branch": "main",
+    "commit": "6a2fbb192f37f51a93690a2ae2d2f5e27e6e4219",
+    "describe": "v0.1.1-2-g6a2fbb1",
+    "worktree_clean": true
+  },
+  "image": {
+    "reference": "ghcr.io/hydra-db/hydradb:latest",
+    "digest": "sha256:db78309a233be54662db29744047e985a39b51c45a270d1a1f47c31a62cdb709",
+    "oci_version": "v0.1.1",
+    "oci_revision": "02a40025d2d57e97ab2754c8256219cdbfeab379",
+    "runtime_agent": "SlateDBGraph/0.1.0",
+    "license": "AGPL-3.0"
+  },
+  "environment": {
+    "node": "v22.22.3",
+    "python": "3.12.3",
+    "rust_available": false,
+    "cargo_available": false,
+    "usable_docker_daemon": false,
+    "java_available": false
+  },
+  "execution_observations": {
+    "http_api": true,
+    "bolt_driver": "neo4j-driver 6.0.1",
+    "restart_persistence": {
+      "verified": true,
+      "read_epoch_after_restart": 22
+    },
+    "second_node_read": true,
+    "second_node_write": {
+      "accepted": false,
+      "http_status": 421,
+      "error": "not_cell_writer",
+      "owner": "node-0"
+    },
+    "bearer_authentication": true,
+    "namespace_authorization": true,
+    "ndjson_streaming": true,
+    "streamed_reverse_blast_radius": {
+      "vertices": 2101,
+      "edges": 2100,
+      "path_rows": 2100,
+      "ndjson_lines_including_header_and_summary": 2102,
+      "has_more": false
+    },
+    "causal_bookmarks": true,
+    "strong_reads": true
+  },
+  "follow_up_checks": {
+    "create_index_ddl": {
+      "verified": true,
+      "accepted": false,
+      "error": "OpenCypher query is not supported yet: CREATE INDEX FOR ..."
+    },
+    "namespace_scope_mismatch": {
+      "verified": true,
+      "authorized": false
+    },
+    "restart_read_epoch": 22
+  },
+  "limitations": [
+    "A source build was not executed because Rust and native build dependencies were absent.",
+    "A long-lived writer became unstable during one partial bulk workload; the same workload completed on a fresh isolated node.",
+    "The wrong Bolt credential path surfaced a JavaScript driver RangeError instead of a normal authentication exception."
+  ]
+}

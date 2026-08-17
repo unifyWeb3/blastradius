@@ -1,0 +1,20 @@
+{
+  "name": "cursor_page",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "cursor_page",
+    "query": "MATCH (p:Person) RETURN p.id AS id ORDER BY id",
+    "parameters": {},
+    "page_size": 1,
+    "cursor": 1,
+    "read_epoch": 4
+  },
+  "http_status": 400,
+  "duration_ms": 3.23,
+  "response": {
+    "error": {
+      "code": "invalid_request",
+      "message": "HTTP query is not supported yet: read_epoch is not a storage snapshot selector; use bookmark for causal reads"
+    }
+  }
+}

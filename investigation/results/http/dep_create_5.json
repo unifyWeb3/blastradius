@@ -1,0 +1,19 @@
+{
+  "name": "dep_create_5",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "dep_create_5",
+    "query": "CREATE (m:Maintainer {id: 207, name: 'Dana'})-[:MAINTAINS]->(p:Package {id: 201, name: 'lib-a'})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 22.658,
+  "response": {
+    "query_id": "dep_create_5",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:15"
+  }
+}

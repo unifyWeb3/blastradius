@@ -1,0 +1,27 @@
+{
+  "name": "insert-security-status-first",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-3-insert-security-status-first",
+    "query": "UNWIND $rows AS row MERGE (n {id: row.vertex}) SET n:DependencyNode, n.kind = row.kind, n.dep_id = row.dep_id, n.name = row.name",
+    "parameters": {
+      "rows": [
+        {
+          "vertex": 1007,
+          "kind": "security_status",
+          "dep_id": "status:compromised",
+          "name": "Compromised"
+        }
+      ]
+    }
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-3-insert-security-status-first",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:3"
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "name": "incoming-sspaths",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-11-incoming-sspaths",
+    "query": "CALL algo.SSpaths({sourceNode: $target, relTypes: ['DEPENDS_ON'], relDirection: 'incoming', maxLen: 3, pathCount: 10, resultLimit: 10}) YIELD path RETURN path",
+    "parameters": {
+      "target": 1003
+    }
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-11-incoming-sspaths",
+    "columns": [
+      "path"
+    ],
+    "rows": [
+      [
+        {
+          "type": "path",
+          "value": {
+            "nodes": [
+              {
+                "id": 1003,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": true
+                  },
+                  "dep_id": {
+                    "String": "pkg:y@4.5.6"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package Y"
+                  },
+                  "version": {
+                    "String": "4.5.6"
+                  }
+                }
+              },
+              {
+                "id": 1002,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": false
+                  },
+                  "dep_id": {
+                    "String": "pkg:x@1.2.3"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package X"
+                  },
+                  "version": {
+                    "String": "1.2.3"
+                  }
+                }
+              }
+            ],
+            "relationships": [
+              {
+                "id": 2,
+                "edge_type": "DEPENDS_ON",
+                "src": 1002,
+                "dst": 1003,
+                "properties": {
+                  "edge_key": {
+                    "String": "x-y"
+                  },
+                  "id": {
+                    "Integer": 1102
+                  },
+                  "t_valid_end": {
+                    "Integer": 20260820
+                  },
+                  "t_valid_start": {
+                    "Integer": 20260802
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "type": "path",
+          "value": {
+            "nodes": [
+              {
+                "id": 1003,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": true
+                  },
+                  "dep_id": {
+                    "String": "pkg:y@4.5.6"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package Y"
+                  },
+                  "version": {
+                    "String": "4.5.6"
+                  }
+                }
+              },
+              {
+                "id": 1005,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": false
+                  },
+                  "dep_id": {
+                    "String": "pkg:q@2.3.4"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package Q"
+                  },
+                  "version": {
+                    "String": "2.3.4"
+                  }
+                }
+              }
+            ],
+            "relationships": [
+              {
+                "id": 4,
+                "edge_type": "DEPENDS_ON",
+                "src": 1005,
+                "dst": 1003,
+                "properties": {
+                  "edge_key": {
+                    "String": "q-y"
+                  },
+                  "id": {
+                    "Integer": 1104
+                  },
+                  "t_valid_end": {
+                    "Integer": 20260820
+                  },
+                  "t_valid_start": {
+                    "Integer": 20260804
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "type": "path",
+          "value": {
+            "nodes": [
+              {
+                "id": 1003,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": true
+                  },
+                  "dep_id": {
+                    "String": "pkg:y@4.5.6"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package Y"
+                  },
+                  "version": {
+                    "String": "4.5.6"
+                  }
+                }
+              },
+              {
+                "id": 1002,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": false
+                  },
+                  "dep_id": {
+                    "String": "pkg:x@1.2.3"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package X"
+                  },
+                  "version": {
+                    "String": "1.2.3"
+                  }
+                }
+              },
+              {
+                "id": 1001,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "dep_id": {
+                    "String": "app:a"
+                  },
+                  "kind": {
+                    "String": "application"
+                  },
+                  "name": {
+                    "String": "App A"
+                  }
+                }
+              }
+            ],
+            "relationships": [
+              {
+                "id": 2,
+                "edge_type": "DEPENDS_ON",
+                "src": 1002,
+                "dst": 1003,
+                "properties": {
+                  "edge_key": {
+                    "String": "x-y"
+                  },
+                  "id": {
+                    "Integer": 1102
+                  },
+                  "t_valid_end": {
+                    "Integer": 20260820
+                  },
+                  "t_valid_start": {
+                    "Integer": 20260802
+                  }
+                }
+              },
+              {
+                "id": 1,
+                "edge_type": "DEPENDS_ON",
+                "src": 1001,
+                "dst": 1002,
+                "properties": {
+                  "edge_key": {
+                    "String": "app-a-x"
+                  },
+                  "id": {
+                    "Integer": 1101
+                  },
+                  "t_valid_end": {
+                    "Integer": 20260820
+                  },
+                  "t_valid_start": {
+                    "Integer": 20260801
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      [
+        {
+          "type": "path",
+          "value": {
+            "nodes": [
+              {
+                "id": 1003,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": true
+                  },
+                  "dep_id": {
+                    "String": "pkg:y@4.5.6"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package Y"
+                  },
+                  "version": {
+                    "String": "4.5.6"
+                  }
+                }
+              },
+              {
+                "id": 1005,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "compromised": {
+                    "Bool": false
+                  },
+                  "dep_id": {
+                    "String": "pkg:q@2.3.4"
+                  },
+                  "kind": {
+                    "String": "package_version"
+                  },
+                  "name": {
+                    "String": "Package Q"
+                  },
+                  "version": {
+                    "String": "2.3.4"
+                  }
+                }
+              },
+              {
+                "id": 1004,
+                "labels": [
+                  "DependencyNode"
+                ],
+                "properties": {
+                  "dep_id": {
+                    "String": "app:b"
+                  },
+                  "kind": {
+                    "String": "application"
+                  },
+                  "name": {
+                    "String": "App B"
+                  }
+                }
+              }
+            ],
+            "relationships": [
+              {
+                "id": 4,
+                "edge_type": "DEPENDS_ON",
+                "src": 1005,
+                "dst": 1003,
+                "properties": {
+                  "edge_key": {
+                    "String": "q-y"
+                  },
+                  "id": {
+                    "Integer": 1104
+                  },
+                  "t_valid_end": {
+                    "Integer": 20260820
+                  },
+                  "t_valid_start": {
+                    "Integer": 20260804
+                  }
+                }
+              },
+              {
+                "id": 3,
+                "edge_type": "DEPENDS_ON",
+                "src": 1004,
+                "dst": 1005,
+                "properties": {
+                  "edge_key": {
+                    "String": "app-b-q"
+                  },
+                  "id": {
+                    "Integer": 1103
+                  },
+                  "t_valid_end": {
+                    "Integer": 20260820
+                  },
+                  "t_valid_start": {
+                    "Integer": 20260803
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "read_epoch": 5,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:5"
+  }
+}

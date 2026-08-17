@@ -1,0 +1,114 @@
+{
+  "name": "temporal-readback",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "go-no-go-9-temporal-readback",
+    "query": "MATCH (s)-[r:DEPENDS_ON]->(t) WHERE r.t_valid_start <= 20260816 AND r.t_valid_end >= 20260816 RETURN s.dep_id AS source, t.dep_id AS target, r.t_valid_start AS start, r.t_valid_end AS end ORDER BY source",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "response": {
+    "query_id": "go-no-go-9-temporal-readback",
+    "columns": [
+      "source",
+      "target",
+      "start",
+      "end"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "app:a"
+        },
+        {
+          "type": "string",
+          "value": "pkg:x@1.2.3"
+        },
+        {
+          "type": "integer",
+          "value": 20260801
+        },
+        {
+          "type": "integer",
+          "value": 20260820
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "app:b"
+        },
+        {
+          "type": "string",
+          "value": "pkg:q@2.3.4"
+        },
+        {
+          "type": "integer",
+          "value": 20260803
+        },
+        {
+          "type": "integer",
+          "value": 20260820
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "pkg:q@2.3.4"
+        },
+        {
+          "type": "string",
+          "value": "pkg:y@4.5.6"
+        },
+        {
+          "type": "integer",
+          "value": 20260804
+        },
+        {
+          "type": "integer",
+          "value": 20260820
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "pkg:x@1.2.3"
+        },
+        {
+          "type": "string",
+          "value": "pkg:y@4.5.6"
+        },
+        {
+          "type": "integer",
+          "value": 20260802
+        },
+        {
+          "type": "integer",
+          "value": 20260820
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "pkg:y@4.5.6"
+        },
+        {
+          "type": "string",
+          "value": "pkg:z@7.8.9"
+        },
+        {
+          "type": "integer",
+          "value": 20260805
+        },
+        {
+          "type": "integer",
+          "value": 20260820
+        }
+      ]
+    ],
+    "read_epoch": 5,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:5"
+  }
+}

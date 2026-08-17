@@ -1,0 +1,33 @@
+{
+  "appUrl": "http://127.0.0.1:8877",
+  "mode": "success",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "initial": {
+    "title": "BlastRadius",
+    "hasEmptyState": true,
+    "hasHydraLabel": false,
+    "analyzeButtonEnabled": true
+  },
+  "loadingState": {
+    "hasLoadingMessage": true,
+    "analyzeButtonDisabled": true
+  },
+  "analysis": {
+    "exposedCount": "1",
+    "graphNodes": 6,
+    "graphEdges": 5,
+    "hasMerchantPath": true,
+    "hasTemporalEvidence": true,
+    "hasHydraTraversal": true
+  },
+  "negativeCase": {
+    "application": "app:analytics-worker",
+    "status": "Not exposed",
+    "message": "No supporting dependency path found."
+  },
+  "browserErrors": [],
+  "passed": true
+}

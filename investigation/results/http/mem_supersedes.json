@@ -1,0 +1,19 @@
+{
+  "name": "mem_supersedes",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "mem_supersedes",
+    "query": "CREATE (m2:Memory {id: 303, subject: 'deploy', value: 'Monday'})-[:SUPERSEDES]->(m1:Memory {id: 301, subject: 'deploy', value: 'Friday'})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 30.692,
+  "response": {
+    "query_id": "mem_supersedes",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:19"
+  }
+}

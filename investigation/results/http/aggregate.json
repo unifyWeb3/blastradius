@@ -1,0 +1,33 @@
+{
+  "name": "aggregate",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "aggregate",
+    "query": "MATCH ()-[r:LINKS]->() RETURN count(*) AS total, sum(r.since) AS years",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 60.425,
+  "response": {
+    "query_id": "aggregate",
+    "columns": [
+      "total",
+      "years"
+    ],
+    "rows": [
+      [
+        {
+          "type": "integer",
+          "value": 3
+        },
+        {
+          "type": "integer",
+          "value": 6069
+        }
+      ]
+    ],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}

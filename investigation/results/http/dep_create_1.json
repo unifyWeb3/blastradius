@@ -1,0 +1,19 @@
+{
+  "name": "dep_create_1",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "dep_create_1",
+    "query": "CREATE (app:Application {id: 200, name: 'checkout'})-[:DEPENDS_ON {source: 'lockfile'}]->(v:Version {id: 202, name: 'lib-a', version: '1.2.0', vulnerable: true})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 13.978,
+  "response": {
+    "query_id": "dep_create_1",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:11"
+  }
+}

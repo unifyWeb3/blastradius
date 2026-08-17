@@ -1,0 +1,33 @@
+{
+  "name": "one_hop",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "one_hop",
+    "query": "MATCH (p:Person {id: 10})-[:LINKS]->(q) RETURN q.id AS id, q.name AS name",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 42.358,
+  "response": {
+    "query_id": "one_hop",
+    "columns": [
+      "id",
+      "name"
+    ],
+    "rows": [
+      [
+        {
+          "type": "vertex_id",
+          "value": 11
+        },
+        {
+          "type": "string",
+          "value": "Bob"
+        }
+      ]
+    ],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}

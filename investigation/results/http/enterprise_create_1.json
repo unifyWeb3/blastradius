@@ -1,0 +1,19 @@
+{
+  "name": "enterprise_create_1",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "enterprise_create_1",
+    "query": "CREATE (alice:Person {id: 100, name: 'Alice', email: 'alice@example.com'})-[:MEMBER_OF]->(team:Team {id: 101, name: 'Data'})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 21.721,
+  "response": {
+    "query_id": "enterprise_create_1",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:5"
+  }
+}

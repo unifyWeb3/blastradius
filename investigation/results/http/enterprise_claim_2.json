@@ -1,0 +1,19 @@
+{
+  "name": "enterprise_claim_2",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "enterprise_claim_2",
+    "query": "CREATE (claim2:Claim {id: 106, value: 'Atlas launches Monday', source: 'email', observed_at: 20260816})-[:ABOUT]->(project:Project {id: 102, name: 'Atlas'})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 21.561,
+  "response": {
+    "query_id": "enterprise_claim_2",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:10"
+  }
+}

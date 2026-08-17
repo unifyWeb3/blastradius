@@ -1,0 +1,19 @@
+{
+  "name": "dep_create_3",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "dep_create_3",
+    "query": "CREATE (sdk:Version {id: 206, name: 'internal-sdk', version: '3.0.0'})-[:DEPENDS_ON {source: 'package.json'}]->(v:Version {id: 202, name: 'lib-a', version: '1.2.0', vulnerable: true})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 16.334,
+  "response": {
+    "query_id": "dep_create_3",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:13"
+  }
+}

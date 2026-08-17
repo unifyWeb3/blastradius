@@ -1,0 +1,40 @@
+{
+  "affected_roots": [
+    {
+      "application": "App A",
+      "dep_id": "app:a",
+      "exposure_path": [
+        "app:a",
+        "pkg:x@1.2.3",
+        "pkg:y@4.5.6"
+      ],
+      "predicates": [
+        "DEPENDS_ON",
+        "DEPENDS_ON"
+      ],
+      "sspath_traversal_order": [
+        "pkg:y@4.5.6",
+        "pkg:x@1.2.3",
+        "app:a"
+      ]
+    },
+    {
+      "application": "App B",
+      "dep_id": "app:b",
+      "exposure_path": [
+        "app:b",
+        "pkg:q@2.3.4",
+        "pkg:y@4.5.6"
+      ],
+      "predicates": [
+        "DEPENDS_ON",
+        "DEPENDS_ON"
+      ],
+      "sspath_traversal_order": [
+        "pkg:y@4.5.6",
+        "pkg:q@2.3.4",
+        "app:b"
+      ]
+    }
+  ]
+}

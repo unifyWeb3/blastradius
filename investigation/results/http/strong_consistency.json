@@ -1,0 +1,29 @@
+{
+  "name": "strong_consistency",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "strong_consistency",
+    "query": "MATCH (p:Person {id: 10}) RETURN p.name AS name",
+    "parameters": {},
+    "consistency": "strong"
+  },
+  "http_status": 200,
+  "duration_ms": 181.622,
+  "response": {
+    "query_id": "strong_consistency",
+    "columns": [
+      "name"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Alice"
+        }
+      ]
+    ],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}

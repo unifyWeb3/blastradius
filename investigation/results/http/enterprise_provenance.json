@@ -1,0 +1,52 @@
+{
+  "name": "enterprise_provenance",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "enterprise_provenance",
+    "query": "MATCH (c:Claim)-[:ABOUT]->(x:Project {name: 'Atlas'}) RETURN c.value AS claim, c.source AS source, c.observed_at AS observed ORDER BY observed",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 11.25,
+  "response": {
+    "query_id": "enterprise_provenance",
+    "columns": [
+      "claim",
+      "source",
+      "observed"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Atlas launches Friday"
+        },
+        {
+          "type": "string",
+          "value": "slack"
+        },
+        {
+          "type": "integer",
+          "value": 20260815
+        }
+      ],
+      [
+        {
+          "type": "string",
+          "value": "Atlas launches Monday"
+        },
+        {
+          "type": "string",
+          "value": "email"
+        },
+        {
+          "type": "integer",
+          "value": 20260816
+        }
+      ]
+    ],
+    "read_epoch": 10,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:10"
+  }
+}

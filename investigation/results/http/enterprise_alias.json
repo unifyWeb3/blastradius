@@ -1,0 +1,19 @@
+{
+  "name": "enterprise_alias",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "enterprise_alias",
+    "query": "CREATE (alias:Alias {id: 104, value: 'A. Smith', canonical: 'Alice'})-[:ALIAS_OF]->(alice:Person {id: 100, name: 'Alice', email: 'alice@example.com'})",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 27.367,
+  "response": {
+    "query_id": "enterprise_alias",
+    "columns": [],
+    "rows": [],
+    "read_epoch": null,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:8"
+  }
+}

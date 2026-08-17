@@ -1,0 +1,61 @@
+{
+  "captured_at": "2026-08-16",
+  "base_url": "http://127.0.0.1:18446/v1/graphs/default/query",
+  "checks": [
+    {
+      "name": "temporal_supersedes_direct",
+      "query": "MATCH (n:Memory {id: 303})-[:SUPERSEDES]->(o:Memory) RETURN n.value AS newer, o.value AS older",
+      "http_status": 200,
+      "response": {
+        "query_id": "temporal_supersedes_direct",
+        "columns": ["newer", "older"],
+        "rows": [[
+          {"type": "string", "value": "Monday"},
+          {"type": "string", "value": "Friday"}
+        ]],
+        "read_epoch": 27,
+        "next_cursor": null,
+        "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:27"
+      }
+    },
+    {
+      "name": "temporal_revokes_direct",
+      "query": "MATCH (s:Session)-[r:REVOKES]->(m:Memory {id: 301}) RETURN s.started_at AS session, m.value AS revoked, r.reason AS reason",
+      "http_status": 200,
+      "response": {
+        "query_id": "temporal_revokes_direct",
+        "columns": ["session", "revoked", "reason"],
+        "rows": [[
+          {"type": "integer", "value": 20260816},
+          {"type": "string", "value": "Friday"},
+          {"type": "string", "value": "corrected"}
+        ]],
+        "read_epoch": 27,
+        "next_cursor": null,
+        "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:27"
+      }
+    },
+    {
+      "name": "dependency_forward_fixed_id",
+      "query": "MATCH (a {id: 205})-[:DEPENDS_ON*1..3]->(v) RETURN v.name AS name, v.version AS version ORDER BY name",
+      "http_status": 200,
+      "response": {
+        "query_id": "dependency_forward_fixed_id",
+        "columns": ["name", "version"],
+        "rows": [
+          [
+            {"type": "string", "value": "internal-sdk"},
+            {"type": "string", "value": "3.0.0"}
+          ],
+          [
+            {"type": "string", "value": "lib-a"},
+            {"type": "string", "value": "1.2.0"}
+          ]
+        ],
+        "read_epoch": 27,
+        "next_cursor": null,
+        "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:27"
+      }
+    }
+  ]
+}

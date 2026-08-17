@@ -1,0 +1,43 @@
+{
+  "name": "dep_explanation",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "dep_explanation",
+    "query": "MATCH (a:Application {name: 'payments'})-[:DEPENDS_ON]->(sdk:Version)-[:DEPENDS_ON]->(v:Version {vulnerable: true}) RETURN a.name AS app, sdk.name AS through, v.name AS vulnerable_package, v.version AS version",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 5.972,
+  "response": {
+    "query_id": "dep_explanation",
+    "columns": [
+      "app",
+      "through",
+      "vulnerable_package",
+      "version"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "payments"
+        },
+        {
+          "type": "string",
+          "value": "internal-sdk"
+        },
+        {
+          "type": "string",
+          "value": "lib-a"
+        },
+        {
+          "type": "string",
+          "value": "1.2.0"
+        }
+      ]
+    ],
+    "read_epoch": 15,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:15"
+  }
+}

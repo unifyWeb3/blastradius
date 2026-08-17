@@ -1,0 +1,33 @@
+{
+  "name": "direct_lookup",
+  "request": {
+    "cell_id": "cell-0",
+    "query_id": "direct_lookup",
+    "query": "MATCH (p:Person {id: 10}) RETURN p.name AS name, p.team AS team",
+    "parameters": {}
+  },
+  "http_status": 200,
+  "duration_ms": 70.549,
+  "response": {
+    "query_id": "direct_lookup",
+    "columns": [
+      "name",
+      "team"
+    ],
+    "rows": [
+      [
+        {
+          "type": "string",
+          "value": "Alice"
+        },
+        {
+          "type": "string",
+          "value": "Core"
+        }
+      ]
+    ],
+    "read_epoch": 4,
+    "next_cursor": null,
+    "bookmark": "sgk:1:6c6f63616c:64656661756c74:63656c6c2d30:4"
+  }
+}
