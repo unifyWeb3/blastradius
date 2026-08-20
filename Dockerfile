@@ -1,6 +1,6 @@
 FROM ghcr.io/hydra-db/hydradb@sha256:db78309a233be54662db29744047e985a39b51c45a270d1a1f47c31a62cdb709 AS hydradb
 
-FROM node:22-bookworm-slim
+FROM node:22-trixie-slim
 
 WORKDIR /app
 ENV CI=true
