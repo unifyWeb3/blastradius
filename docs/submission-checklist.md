@@ -28,7 +28,7 @@ Deadline: August 20, 2026 at 11:59 PM PT
 - [ ] Record the approximately 2:30 demo.
 - [ ] Verify the final video is at most three minutes.
 - [ ] Add the demo video URL to `docs/submission.md`.
-- [ ] Verify any deployed demo URL from a clean browser.
+- [x] Verify deployed demo URL from clean desktop and mobile browsers.
 - [ ] Submit the Hack Hydra form before the deadline.
 
 The current managed workspace still exposes an empty read-only root `.git`

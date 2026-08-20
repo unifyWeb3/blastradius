@@ -1,0 +1,46 @@
+{
+  "appUrl": "https://blastradius-production-4585.up.railway.app",
+  "mode": "success",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "homepage": {
+    "hasHeadline": true,
+    "hasHydraExplanation": true,
+    "hasCuratedScope": true,
+    "primaryActionHref": "/incident"
+  },
+  "initial": {
+    "title": "BlastRadius",
+    "hasEmptyState": true,
+    "hasHydraLabel": true,
+    "analyzeButtonEnabled": true
+  },
+  "loadingState": {
+    "hasLoadingMessage": true,
+    "analyzeButtonDisabled": true
+  },
+  "slowState": null,
+  "analysis": {
+    "exposedCount": "1",
+    "graphNodes": 6,
+    "graphEdges": 5,
+    "hasMerchantPath": true,
+    "hasTemporalEvidence": true,
+    "hasHydraTraversal": true
+  },
+  "staleState": {
+    "banner": true,
+    "checkDisabled": true,
+    "staleNote": true
+  },
+  "negativeCase": {
+    "application": "app:analytics-worker",
+    "status": "Not exposed",
+    "message": "No supporting dependency path found."
+  },
+  "browserErrors": [],
+  "httpFailures": [],
+  "passed": true
+}

@@ -73,5 +73,6 @@ engine, but both processes share one service budget.
 On August 20, 2026, Railway created the dedicated `blastradius` project and
 accepted one `blastradius` service. A second `hydradb` service was rejected by
 the free-plan resource limit, so the one-service fallback is the available
-deployment topology unless the account is upgraded. No live URL is claimed
-until the deployed service's health endpoint and real graph query pass.
+deployment topology unless the account is upgraded. The verified live URL is
+<https://blastradius-production-4585.up.railway.app>. It passed health, real
+graph analysis, clean desktop/mobile browser smoke, and restart persistence.

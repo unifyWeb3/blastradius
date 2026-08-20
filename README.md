@@ -6,6 +6,8 @@ The product opens at `/` with a concise explanation of the problem and moves
 to the real investigation console at `/incident`. The homepage preview is
 illustrative; the incident console performs the actual HydraDB-backed query.
 
+Live demo: <https://blastradius-production-4585.up.railway.app>
+
 The Hack Hydra 2026 submission targets Track 02A: Repos, Dependencies + Code as Graphs.
 
 ![BlastRadius homepage](docs/validation/browser-smoke-production-desktop-verified/homepage.png)
@@ -235,8 +237,13 @@ This is a local generated shape, not an npm ecosystem benchmark. Query results a
 - The query planner reported full-edge-scan warnings for the small readback/count queries.
 - 10k was measured locally. 100k and ecosystem-scale accuracy remain unverified.
 - The application uses a single HydraDB node and plaintext local development configuration.
-- A public deployment is not included in this repository claim until its
-  health endpoint and real graph query have been verified from a clean browser.
+- The live demo uses a single Railway service containing the Node API and the
+  pinned HydraDB graph node, with a persistent `/data` volume. The separate
+  two-service topology remains the preferred production shape; the one-service
+  arrangement is a resource-plan fallback.
+- Railway logs currently report non-fatal HydraDB local-filesystem garbage
+  collector warnings (`PutMode::Update` is not implemented). Queries,
+  ingestion, healthchecks, and restart persistence remain verified.
 
 ## Attribution
 
