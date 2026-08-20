@@ -1,0 +1,42 @@
+<!-- @dsCard group="BlastRadius Console" viewport="900x760" name="Mobile composition" subtitle="≤820px: sidebar stacks above the workspace, graph 380px, scope note moves to the foot" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BlastRadius — mobile</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>body{margin:0;padding:20px;background:var(--gr-1000);font-family:var(--font-sans);display:flex;gap:22px;align-items:flex-start}
+.phone{width:390px;flex:none;height:700px;overflow:auto;border:1px solid var(--border-default);background:var(--bg-app)}
+.notes{max-width:330px;padding-top:6px}
+.notes h1{font-size:20px;font-weight:600;letter-spacing:-.014em;margin:0 0 10px;color:var(--text-primary)}
+.notes p{font-size:11.5px;line-height:1.55;color:var(--text-muted);margin:0 0 12px}
+.notes code{font-family:var(--font-mono);font-size:10.5px;color:var(--text-secondary)}
+.notes ul{margin:0;padding-left:15px}
+.notes li{font-size:11.5px;line-height:1.6;color:var(--text-secondary);margin-bottom:5px}
+</style></head><body>
+<div class="phone" id="root"></div>
+<div class="notes">
+  <h1>≤ 820px composition</h1>
+  <p>Carried verbatim from <code>src/client/styles.css</code>; only the surface changes.</p>
+  <ul>
+    <li>Top bar drops the descriptor and the HydraDB runtime badge — mark and wordmark only.</li>
+    <li>The incident rail stops being a rail: it stacks full-width above the workspace and loses its right border.</li>
+    <li>Summary band goes from four columns to two, with a hairline between the rows.</li>
+    <li>Graph canvas drops to <code>380px</code>; pan and zoom stay available.</li>
+    <li>Root inventory unstacks below the graph rather than beside it.</li>
+    <li>Evidence and timeline become a single column; the dependency chain scrolls horizontally.</li>
+    <li>The provenance note moves from the rail foot to the page foot — it is never dropped.</li>
+  </ul>
+</div>
+<script src="../../_ds_bundle.js"></script>
+<script src="./fixture.js"></script>
+<script type="text/babel" src="./GraphCanvas.jsx"></script>
+<script type="text/babel" src="./IncidentSidebar.jsx"></script>
+<script type="text/babel" src="./EvidencePanels.jsx"></script>
+<script type="text/babel" src="./Workspace.jsx"></script>
+<script type="text/babel" data-presets="react">
+const mount = () => {
+  if (!window.Workspace) return setTimeout(mount, 40);
+  ReactDOM.createRoot(document.getElementById("root")).render(<window.Workspace startLoading={false} forceBp="sm" />);
+};
+mount();
+</script></body></html>

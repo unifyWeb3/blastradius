@@ -1,0 +1,18 @@
+/* Motion. This is an incident console: motion confirms state changes and traces
+   the selected path. Nothing bounces, nothing decorates, nothing loops except
+   the two indicators that represent live work (spinner, selected-path flow). */
+:root {
+  --ease-standard: cubic-bezier(0.2, 0, 0.15, 1); /* @kind other */
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --duration-instant: 80ms; /* @kind other */
+  --duration-fast: 130ms; /* @kind other */
+  --duration-base: 200ms; /* @kind other */
+  --duration-slow: 320ms; /* @kind other */
+
+  --transition-control: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+  --transition-surface: background-color var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard);
+
+  /* (src) */
+  --spin-duration: 1s; /* @kind other */
+  --dash-duration: 1.1s; /* @kind other */
+}

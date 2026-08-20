@@ -64,11 +64,22 @@ An intentional HydraDB transport outage was also tested. The API returned
 accessible alert, and the graph remained empty. The browser logged the expected
 failed `502` resource request but no uncaught runtime exception.
 
+The final-push rerun also passed against the production-style auto-ingestion
+startup path:
+
+- desktop 1440x1000: PASS, including stale-window protection;
+- mobile 390x844: PASS;
+- controlled outage on the isolated app instance: PASS;
+- auto-ingested API analysis: PASS, one affected root and two candidates.
+
 Artifacts:
 
 - `docs/validation/browser-smoke-final/`
 - `docs/validation/browser-smoke-mobile-final/`
 - `docs/validation/browser-error-smoke/`
+- `docs/validation/browser-smoke-production-desktop-verified/`
+- `docs/validation/browser-smoke-production-mobile/`
+- `docs/validation/browser-error-smoke-production/`
 
 ## Performance Gate
 

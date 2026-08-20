@@ -1,0 +1,140 @@
+/* BlastRadius color system — single dark "instrument" theme.
+   Neutrals are a green-graphite ramp inherited from the source implementation
+   (#17201e ink / #edf0ee paper), inverted for a console. Every non-neutral hue
+   carries one fixed meaning; color is never decorative. */
+:root {
+  /* ---- neutral ramp: green-graphite ---- */
+  --gr-1000: #080C0B;
+  --gr-950: #0B100F;
+  --gr-925: #0E1413;
+  --gr-900: #121917;
+  --gr-850: #17201E;
+  --gr-800: #1D2725;
+  --gr-750: #202A28;
+  --gr-700: #2C3936;
+  --gr-600: #3B4A46;
+  --gr-500: #55665F;
+  --gr-400: #6E807A;
+  --gr-300: #8C9C96;
+  --gr-200: #A9B7B2;
+  --gr-100: #CBD6D2;
+  --gr-050: #E6EDEA;
+  --gr-000: #F7FAF9;
+
+  /* ---- signal hues ---- */
+  /* compromise / active exposure */
+  --red-300: #F5928E;
+  --red-400: #EE6B67;
+  --red-500: #E5484D;
+  --red-600: #C3352F;
+  --red-700: #B92E27; /* exact source value */
+  --red-800: #8F211C; /* exact source value */
+  --red-900: #4A1613;
+  /* temporal negative: path exists, window does not overlap */
+  --amber-400: #EDBE55;
+  --amber-500: #E0A82E;
+  --amber-700: #A36A10; /* exact source value */
+  --amber-900: #3D2C0C;
+  /* verified evidence / effective exposure / selection */
+  --teal-300: #64D9BE;
+  --teal-400: #46C9AA;
+  --teal-500: #2FB89B;
+  --teal-600: #1E937C;
+  --teal-700: #167A69; /* exact source value */
+  --teal-900: #0D2E28;
+  /* unresolved: temporal evidence missing — deliberately not green, not amber, not red */
+  --steel-300: #A7C6D8;
+  --steel-400: #89B0C6;
+  --steel-500: #6E9BB8;
+  --steel-700: #3C6580;
+  --steel-900: #16242D;
+
+  /* ---- surfaces ---- */
+  --bg-app: var(--gr-950);
+  --surface-chrome: var(--gr-1000);
+  --surface-sunken: var(--gr-925);
+  --surface-panel: var(--gr-900);
+  --surface-raised: var(--gr-850);
+  --surface-input: var(--gr-925);
+  --surface-hover: var(--gr-800);
+  --surface-active: var(--gr-750);
+
+  /* ---- text ---- */
+  --text-primary: var(--gr-050);
+  --text-secondary: var(--gr-200);
+  --text-muted: var(--gr-400);
+  --text-faint: var(--gr-500);
+  --text-inverse: var(--gr-1000);
+  --text-on-signal: #FFFFFF;
+
+  /* ---- borders ---- */
+  --border-subtle: var(--gr-750);
+  --border-default: var(--gr-700);
+  --border-strong: var(--gr-600);
+  --border-input: var(--gr-600);
+  --focus-ring: var(--teal-500);
+
+  /* ---- domain status semantics ---- */
+  --status-compromised: var(--red-500);
+  --status-compromised-bg: rgba(229, 72, 77, 0.13);
+  --status-compromised-border: rgba(229, 72, 77, 0.36);
+  --status-compromised-solid: var(--red-700);
+
+  --status-exposed: var(--red-400);
+  --status-exposed-bg: rgba(229, 72, 77, 0.11);
+  --status-exposed-border: rgba(229, 72, 77, 0.30);
+
+  --status-outside-window: var(--amber-500);
+  --status-outside-window-bg: rgba(224, 168, 46, 0.12);
+  --status-outside-window-border: rgba(224, 168, 46, 0.30);
+
+  --status-healthy: var(--teal-500);
+  --status-healthy-bg: rgba(47, 184, 155, 0.12);
+  --status-healthy-border: rgba(47, 184, 155, 0.30);
+
+  --status-unresolved: var(--steel-400);
+  --status-unresolved-bg: rgba(110, 155, 184, 0.12);
+  --status-unresolved-border: rgba(110, 155, 184, 0.34);
+  --status-unresolved-hatch: repeating-linear-gradient(135deg, rgba(137, 176, 198, 0.20) 0 3px, transparent 3px 8px); /* @kind other */
+
+  --status-error: var(--red-400);
+  --status-error-bg: rgba(229, 72, 77, 0.10);
+  --status-error-border: rgba(229, 72, 77, 0.34);
+
+  --status-neutral: var(--gr-300);
+  --status-neutral-bg: var(--gr-800);
+  --status-neutral-border: var(--border-default);
+
+  /* ---- graph semantics ---- */
+  --graph-canvas: var(--gr-925);
+  --graph-grid: #1A2321;
+  --graph-node-surface: var(--gr-850);
+  --graph-node-border: var(--gr-700);
+  --graph-node-label: var(--gr-050);
+  --graph-node-meta: var(--gr-400);
+  --graph-node-inert: var(--gr-500);
+  --graph-edge: #45544F;
+  --graph-edge-label: var(--gr-400);
+  --graph-edge-selected: var(--red-500);
+  --graph-selection-ring: var(--teal-500);
+  --graph-handle: var(--gr-600);
+
+  /* ---- timeline semantics ---- */
+  --timeline-track: var(--gr-800);
+  --timeline-compromise: var(--red-500);
+  --timeline-dependency: var(--gr-400);
+  --timeline-effective: var(--teal-500);
+  --timeline-unresolved: var(--steel-500);
+
+  /* ---- action colors ---- */
+  --action-primary-bg: var(--red-700);
+  --action-primary-bg-hover: var(--red-600);
+  --action-primary-bg-active: var(--red-800);
+  --action-primary-fg: #FFFFFF;
+  --action-secondary-bg: var(--gr-800);
+  --action-secondary-bg-hover: var(--gr-750);
+  --action-secondary-fg: var(--gr-050);
+  --action-quiet-fg: var(--gr-200);
+  --link-fg: var(--teal-400);
+  --link-fg-hover: var(--teal-300);
+}

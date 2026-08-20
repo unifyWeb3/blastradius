@@ -1,0 +1,9 @@
+/* BlastRadius type stack.
+   The production entry point bundles IBM Plex Sans and IBM Plex Mono from Fontsource,
+   so the console does not depend on a third-party font request at runtime. */
+
+:root {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-condensed: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

@@ -2,9 +2,15 @@
 
 BlastRadius is a narrow incident-response console for temporal software supply-chain analysis. Given a compromised package version, it asks HydraDB for the incoming transitive dependency paths, identifies affected application roots, and shows the exact graph evidence for each result.
 
+The product opens at `/` with a concise explanation of the problem and moves
+to the real investigation console at `/incident`. The homepage preview is
+illustrative; the incident console performs the actual HydraDB-backed query.
+
 The Hack Hydra 2026 submission targets Track 02A: Repos, Dependencies + Code as Graphs.
 
-![BlastRadius incident analysis](docs/validation/browser-smoke-final/incident-analysis.png)
+![BlastRadius homepage](docs/validation/browser-smoke-production-desktop-verified/homepage.png)
+
+![BlastRadius incident analysis](docs/validation/browser-smoke-production-desktop-verified/incident-analysis.png)
 
 ## The Problem
 
@@ -146,6 +152,11 @@ pnpm start
 
 Open `http://127.0.0.1:8787`.
 
+The root `Dockerfile` builds the same Node server for a container host. It
+listens on `PORT` (or `BLASTRADIUS_PORT`) and `HOST`, defaulting to
+`0.0.0.0`. See [deployment.md](docs/deployment.md) for the separate persistent
+HydraDB service and production bootstrap.
+
 For the verified no-Docker development path, start HydraDB with:
 
 ```bash
@@ -198,6 +209,12 @@ pnpm ui:smoke
 
 The latest acceptance evidence is in [acceptance.md](docs/validation/acceptance.md). The measured 10k generated graph result is in [performance-10k/result.json](docs/validation/performance-10k/result.json).
 
+The browser smoke harness covers the homepage-to-console transition, loading,
+successful graph/path evidence, stale-window protection, mobile layout, and a
+controlled HydraDB outage. Captured results are under
+`docs/validation/browser-smoke-production-*` and
+`docs/validation/browser-error-smoke-production`.
+
 ## Measured Performance
 
 On the local single-node extracted-image runtime, the generated 10k-vertex graph measured:
@@ -218,6 +235,8 @@ This is a local generated shape, not an npm ecosystem benchmark. Query results a
 - The query planner reported full-edge-scan warnings for the small readback/count queries.
 - 10k was measured locally. 100k and ecosystem-scale accuracy remain unverified.
 - The application uses a single HydraDB node and plaintext local development configuration.
+- A public deployment is not included in this repository claim until its
+  health endpoint and real graph query have been verified from a clean browser.
 
 ## Attribution
 

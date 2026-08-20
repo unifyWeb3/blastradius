@@ -31,6 +31,8 @@
     "vitest": "^3.1.4"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.2.6",
+    "@fontsource/ibm-plex-sans": "5.2.6",
     "@xyflow/react": "12.10.0",
     "lucide-react": "0.468.0",
     "react": "19.2.0",

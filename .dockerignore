@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+.pnpm-store
+hydradb-data
+.env
+.env.local
+docs/validation/browser-smoke/
+docs/validation/browser-smoke-mobile/
+investigation/upstream/
+investigation/external/

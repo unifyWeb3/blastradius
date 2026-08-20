@@ -44,6 +44,7 @@ export const buildGraphLayout = (
     const status = candidateStatus.get(node.entityId);
     const Icon = isCompromised ? ShieldAlert : node.kind === "application" ? Box : Package;
     const detail = node.kind === "application" ? node.environment : node.version ? `v${node.version}` : node.kind;
+    const dimmed = Boolean(selectedPath) && !selectedNodes.has(node.entityId) && !isCompromised;
 
     return {
       id: node.entityId,
@@ -61,12 +62,14 @@ export const buildGraphLayout = (
           </div>
         ),
       },
+      ariaLabel: `${node.name}${detail ? `, ${detail}` : ""}`,
       className: [
         "graph-node",
         isCompromised ? "graph-node--compromised" : "",
         node.kind === "application" ? "graph-node--application" : "",
         status ? `graph-node--${status}` : "",
         selectedNodes.has(node.entityId) ? "graph-node--selected" : "",
+        dimmed ? "graph-node--dimmed" : "",
       ].filter(Boolean).join(" "),
     };
   });
@@ -77,13 +80,13 @@ export const buildGraphLayout = (
       id: relationship.edgeId,
       source: relationship.sourceEntityId,
       target: relationship.targetEntityId,
-      label: "DEPENDS_ON",
-      markerEnd: { type: MarkerType.ArrowClosed, color: selected ? "#b92e27" : "#72817c" },
+      label: relationship.relationshipType,
+      markerEnd: { type: MarkerType.ArrowClosed, color: selected ? "var(--graph-edge-selected)" : "var(--graph-edge)" },
       className: selected ? "graph-edge graph-edge--selected" : "graph-edge",
       animated: selected,
-      style: { stroke: selected ? "#b92e27" : "#72817c", strokeWidth: selected ? 2.5 : 1.5 },
-      labelStyle: { fill: selected ? "#8f211c" : "#53625d", fontSize: 10, fontWeight: 700 },
-      labelBgStyle: { fill: "#f4f6f5", fillOpacity: 0.94 },
+      style: { stroke: selected ? "var(--graph-edge-selected)" : "var(--graph-edge)", strokeWidth: selected ? 2.5 : 1.5 },
+      labelStyle: { fill: selected ? "var(--graph-edge-selected)" : "var(--graph-edge-label)", fontSize: 10, fontWeight: 700 },
+      labelBgStyle: { fill: "var(--graph-canvas)", fillOpacity: 0.94 },
       labelBgPadding: [5, 3],
       labelBgBorderRadius: 3,
     };

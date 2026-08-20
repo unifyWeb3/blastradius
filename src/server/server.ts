@@ -5,10 +5,13 @@ import { extname, resolve } from "node:path";
 import { BlastRadiusService } from "../graph/blast-radius-service.js";
 import { HydraDbClient, hydraDbConfigFromEnv } from "../hydradb/client.js";
 import { handleApiRequest } from "./api.js";
+import { bootstrapIncidentFixture, bootstrapOptionsFromEnv } from "./bootstrap.js";
 
-const appPort = Number(process.env.BLASTRADIUS_PORT ?? 8787);
+const appPort = Number(process.env.PORT ?? process.env.BLASTRADIUS_PORT ?? 8787);
+const appHost = process.env.HOST ?? "0.0.0.0";
 const publicRoot = resolve(process.cwd(), "dist");
-const blastRadius = new BlastRadiusService(new HydraDbClient(hydraDbConfigFromEnv()));
+const hydraDb = new HydraDbClient(hydraDbConfigFromEnv());
+const blastRadius = new BlastRadiusService(hydraDb);
 
 const server = createServer(async (request, response) => {
   try {
@@ -27,9 +30,20 @@ const server = createServer(async (request, response) => {
   }
 });
 
-server.listen(appPort, "127.0.0.1", () => {
-  console.log(`BlastRadius listening at http://127.0.0.1:${appPort}`);
-});
+const start = async (): Promise<void> => {
+  const ingestion = await bootstrapIncidentFixture(hydraDb, bootstrapOptionsFromEnv());
+  if (ingestion) {
+    console.log(
+      `HydraDB fixture ready: ${ingestion.nodeCount} nodes, ${ingestion.relationshipCount} relationships.`,
+    );
+  }
+
+  server.listen(appPort, appHost, () => {
+    console.log(`BlastRadius listening at http://${appHost}:${appPort}`);
+  });
+};
+
+await start();
 
 const toWebRequest = async (request: IncomingMessage, url: URL): Promise<Request> => {
   const body = request.method === "GET" || request.method === "HEAD" ? undefined : await readRequestBody(request);

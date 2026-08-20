@@ -1,0 +1,22 @@
+<!-- @dsCard group="Type" viewport="700x160" name="Display · incident identity" subtitle="The one thing every screen must answer first: which exact version is compromised" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:14px 18px;background:var(--bg-app);color:var(--text-primary);font-family:var(--font-sans)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:8px}
+.k{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
+.mono{font-family:var(--font-mono)}
+.note{font-size:10.5px;color:var(--text-muted);line-height:1.45}
+.spec{display:grid;grid-template-columns:1fr 150px;gap:14px;align-items:baseline}
+.spec .m{font-family:var(--font-mono);font-size:9.5px;color:var(--text-faint);line-height:1.5;text-align:right}
+table{border-collapse:collapse;width:100%}
+td,th{text-align:left;padding:4px 10px 4px 0;font-size:10.5px;color:var(--text-secondary);font-weight:400}
+th{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);padding-bottom:6px}
+td.m{font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}</style></head><body>
+<div class="spec">
+<div>
+<div style="font-size:30px;font-weight:600;line-height:1.02;letter-spacing:-.022em">ua-parser-js</div>
+<div style="font-size:19px;font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--status-compromised);margin-top:5px">@0.7.29</div>
+</div>
+<div class="m">--type-display-*<br>30px / 1.02 / 600 / -0.022em<br><br>--type-version-*<br>19px / 600 / red-500</div>
+</div>
+<p class="note" style="margin:12px 0 0">Package name and version are split onto two lines so the version — the part that decides exposure — carries its own colour and cannot be skimmed past.</p>
+</body></html>

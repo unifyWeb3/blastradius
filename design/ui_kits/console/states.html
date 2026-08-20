@@ -1,0 +1,139 @@
+<!-- @dsCard group="BlastRadius Console" viewport="1280x760" name="Route states" subtitle="Every documented state of the single route, including the designed unresolved treatment" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BlastRadius — route states</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>body{margin:0;padding:20px;background:var(--bg-app);font-family:var(--font-sans)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tile{border:1px solid var(--border-subtle);background:var(--surface-panel);display:flex;flex-direction:column;min-height:196px}
+.tile>header{padding:9px 12px;border-bottom:1px solid var(--border-subtle);background:var(--gr-925);display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.tile>header b{font-size:11.5px;font-weight:600;letter-spacing:-.005em;color:var(--text-primary);min-width:0}
+.tile>header span{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-align:right;flex:none;white-space:nowrap}
+.tile>div{flex:1;padding:12px;display:flex;flex-direction:column;gap:9px;justify-content:center}
+h1{font-size:20px;font-weight:600;letter-spacing:-.014em;margin:0 0 3px}
+.sub{font-size:11.5px;color:var(--text-muted);margin:0 0 20px;line-height:1.5;max-width:660px}
+.gh{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);margin:26px 0 10px}
+</style></head><body><div id="root"></div>
+<script src="../../_ds_bundle.js"></script>
+<script src="./fixture.js"></script>
+<script type="text/babel" data-presets="react">
+const NS = window.BlastRadiusDesignSystem_6e5e22;
+const { Button, Field, Select, StatusPill, StatusChip, CheckResult, ApplicationRow, SummaryMetric, EmptyState, ErrorBanner, FullScreenState, GraphNode, EvidenceRow, TimelineRow, Kicker } = NS;
+
+const Tile = ({ title, source, children }) => (
+  <section className="tile"><header><b>{title}</b><span>{source}</span></header><div>{children}</div></section>
+);
+
+const States = () => (
+  <div>
+    <h1>Route states</h1>
+    <p className="sub">One route, every implemented state. The wording and the reason codes are the product&rsquo;s own; the treatments are this design system&rsquo;s. Nothing here is a state the product cannot reach.</p>
+
+    <div className="gh">Route-level</div>
+    <div className="grid">
+      <Tile title="Initial incident load" source="GET /api/incidents">
+        <FullScreenState busy label="Loading incident" detail="GET /api/incidents" style={{minHeight:120,padding:0}} />
+      </Tile>
+      <Tile title="Incident unavailable" source="fixture missing">
+        <FullScreenState tone="danger" icon="triangle-alert" label="Incident unavailable" detail="No incident fixture is available." style={{minHeight:120,padding:0}} />
+      </Tile>
+      <Tile title="Engine failure" source="HTTP 502">
+        <ErrorBanner message="HydraDB could not complete the graph operation." onDismiss={() => {}} />
+        <span style={{fontSize:10.5,color:"var(--text-muted)",lineHeight:1.45}}>The stale result is cleared, not left on screen. The user retries through the existing analysis action.</span>
+      </Tile>
+    </div>
+
+    <div className="gh">Analysis lifecycle</div>
+    <div className="grid">
+      <Tile title="Analysis pending" source="analysis: null">
+        <EmptyState label="Analysis pending" sublabel="No graph result" height={150} />
+      </Tile>
+      <Tile title="Querying HydraDB" source="analysisPending: true">
+        <EmptyState busy label="Querying HydraDB" sublabel="Incoming SSpaths traversal" height={150} />
+      </Tile>
+      <Tile title="Summary before / after" source="affectedRootCount">
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",border:"1px solid var(--border-subtle)"}}>
+          <SummaryMetric label="Exposed" value="—" hint="not queried" />
+          <SummaryMetric label="Exposed" value="1" tone="danger" hint="affectedRoots[]" divider={false} />
+        </div>
+        <span style={{fontSize:10.5,color:"var(--text-muted)",lineHeight:1.45}}>An em dash means &ldquo;not queried yet&rdquo;. A zero would read as a real negative result.</span>
+      </Tile>
+    </div>
+
+    <div className="gh">Window &amp; selection</div>
+    <div className="grid">
+      <Tile title="Invalid exposure window" source="start &lt; end">
+        <Field label="UTC start" inputProps={{defaultValue:"2021-10-22T12:15:21.378"}} />
+        <Field label="UTC end" invalid hint="Start must be before end" inputProps={{defaultValue:"2021-10-22T09:00:00.000"}} />
+        <Button variant="primary" block icon="radar" disabled>Analyze blast radius</Button>
+      </Tile>
+      <Tile title="Root inventory selection" source="candidateRoots[]">
+        <ApplicationRow name="Merchant Web" status="exposed" hopCount={3} selected />
+        <ApplicationRow name="Admin Portal" status="not_exposed" hopCount={2} />
+        <ApplicationRow name="Checkout API" status="unresolved" hopCount={4} />
+      </Tile>
+      <Tile title="No path selected" source="selectedPath: null">
+        <EmptyState icon="circle-slash-2" label="No path selected" height={150} grid={false} />
+      </Tile>
+    </div>
+
+    <div className="gh">Exposure check &mdash; the four reasons</div>
+    <div className="grid">
+      <Tile title="Exposed" source="supporting_dependency_path">
+        <Select defaultValue="a" options={[{value:"a",label:"Merchant Web"}]} />
+        <CheckResult reason="supporting_dependency_path" hopCount={3} />
+      </Tile>
+      <Tile title="Outside window" source="no_common_overlap">
+        <Select defaultValue="a" options={[{value:"a",label:"Admin Portal"}]} />
+        <CheckResult reason="no_common_overlap" />
+      </Tile>
+      <Tile title="No path" source="no_supporting_dependency_path">
+        <Select defaultValue="a" options={[{value:"a",label:"Analytics Worker"}]} />
+        <CheckResult reason="no_supporting_dependency_path" />
+      </Tile>
+    </div>
+
+    <div className="gh">Designed: the unresolved state</div>
+    <div className="grid">
+      <Tile title="Temporal evidence incomplete" source="missing_dependency_validity">
+        <CheckResult reason="missing_dependency_validity" />
+      </Tile>
+      <Tile title="Missing validity as evidence" source="validWindow: null">
+        <div style={{borderTop:"1px solid var(--border-subtle)"}}>
+          <EvidenceRow evidence="@acme/identity-sdk@2.7.1 retained a dependency edge" />
+        </div>
+      </Tile>
+      <Tile title="Unresolved on the timeline" source="no measurable extent">
+        <TimelineRow label="Compromise" tone="compromise" left={0} width={9} />
+        <TimelineRow label="Dependency 1" left={0} width={100} />
+        <TimelineRow label="Dependency 2" tone="unresolved" />
+        <span style={{fontSize:10.5,color:"var(--text-muted)",lineHeight:1.45}}>A dashed hatched band spans the track: the interval is unknown, so no extent may be implied.</span>
+      </Tile>
+    </div>
+
+    <div className="gh">Graph node hierarchy</div>
+    <div className="grid">
+      <Tile title="Compromised &amp; exposed" source="graph.nodes[]">
+        <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+          <GraphNode kind="compromised" name="ua-parser-js@0.7.29" detail="v0.7.29" />
+          <GraphNode kind="application" status="exposed" name="Merchant Web" detail="production" clickable selected />
+        </div>
+      </Tile>
+      <Tile title="Negative &amp; unresolved roots" source="candidateRoots[].status">
+        <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+          <GraphNode kind="application" status="not_exposed" name="Admin Portal" detail="production" clickable />
+          <GraphNode kind="application" status="unresolved" name="Checkout API" detail="production" clickable />
+        </div>
+      </Tile>
+      <Tile title="Off-path dependencies" source="dimmed, still readable">
+        <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+          <GraphNode name="request-ip@2.1.3" detail="v2.1.3" selected />
+          <GraphNode name="agent-base@6.0.2" detail="v6.0.2" dimmed />
+        </div>
+      </Tile>
+    </div>
+  </div>
+);
+ReactDOM.createRoot(document.getElementById("root")).render(<States />);
+</script></body></html>

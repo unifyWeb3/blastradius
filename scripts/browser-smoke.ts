@@ -6,6 +6,9 @@ const outputDirectory = process.env.UI_SMOKE_OUTPUT ?? "docs/validation/browser-
 const viewportWidth = Number(process.env.UI_SMOKE_WIDTH ?? 1440);
 const viewportHeight = Number(process.env.UI_SMOKE_HEIGHT ?? 1000);
 const mode = process.env.UI_SMOKE_MODE === "error" ? "error" : "success";
+const verifyStaleState = process.env.UI_SMOKE_VERIFY_STALE === "1";
+const verifySlowState = process.env.UI_SMOKE_VERIFY_SLOW === "1";
+const networkLatencyMs = Number(process.env.UI_SMOKE_LATENCY_MS ?? 500);
 
 interface CdpResponse {
   id?: number;
@@ -38,6 +41,7 @@ await new Promise<void>((resolve, reject) => {
 let commandId = 0;
 const pending = new Map<number, PendingCommand>();
 const browserErrors: string[] = [];
+const httpFailures: string[] = [];
 
 socket.addEventListener("message", (event) => {
   const message = JSON.parse(String(event.data)) as CdpResponse;
@@ -52,6 +56,12 @@ socket.addEventListener("message", (event) => {
 
   if (message.method === "Runtime.exceptionThrown") {
     browserErrors.push(JSON.stringify(message.params));
+  }
+  if (message.method === "Network.responseReceived") {
+    const response = message.params?.response as { status?: number; url?: string } | undefined;
+    if ((response?.status ?? 0) >= 400) {
+      httpFailures.push(`${response?.status ?? "unknown"} ${response?.url ?? "unknown URL"}`);
+    }
   }
   if (message.method === "Log.entryAdded") {
     const entry = message.params?.entry as { level?: string; text?: string } | undefined;
@@ -77,8 +87,21 @@ await send("Emulation.setDeviceMetricsOverride", {
   mobile: false,
 });
 await send("Page.navigate", { url: appUrl });
-await waitFor("document.readyState === 'complete' && document.body.innerText.includes('BlastRadius')");
-await waitFor("document.body.innerText.includes('Analysis pending')");
+await waitFor("document.readyState === 'complete' && document.body.innerText.includes('Know exactly what a compromised dependency reaches.')");
+const homepage = await evaluate(`({
+  hasHeadline: document.body.innerText.includes('Know exactly what a compromised dependency reaches.'),
+  hasHydraExplanation: document.body.innerText.toLowerCase().includes('hydradb is the analytical engine'),
+  hasCuratedScope: document.body.innerText.includes('Curated incident dataset'),
+  primaryActionHref: [...document.querySelectorAll('a')].find(anchor => anchor.textContent?.includes('Investigate an incident'))?.getAttribute('href')
+})`);
+const homepageScreenshot = await send("Page.captureScreenshot", {
+  format: "png",
+  captureBeyondViewport: true,
+  fromSurface: true,
+});
+const incidentUrl = new URL("/incident", appUrl).toString();
+await send("Page.navigate", { url: incidentUrl });
+await waitFor("document.readyState === 'complete' && document.body.innerText.includes('Analysis pending')");
 
 const initial = await evaluate(`({
   title: document.title,
@@ -89,7 +112,7 @@ const initial = await evaluate(`({
 
 await send("Network.emulateNetworkConditions", {
   offline: false,
-  latency: 500,
+  latency: networkLatencyMs,
   downloadThroughput: -1,
   uploadThroughput: -1,
   connectionType: "wifi",
@@ -105,6 +128,14 @@ const loadingState = await evaluate(`({
   hasLoadingMessage: document.body.innerText.includes('Querying HydraDB'),
   analyzeButtonDisabled: document.querySelector('.primary-button')?.disabled === true
 })`);
+let slowState: unknown = null;
+if (verifySlowState) {
+  await waitFor("document.body.innerText.includes('Traversal is still active; results appear after the complete response.')", 15_000);
+  slowState = await evaluate(`({
+    hasSlowMessage: document.body.innerText.includes('Traversal is still active; results appear after the complete response.'),
+    analysisStillAtomic: document.querySelectorAll('.react-flow__node').length === 0
+  })`);
+}
 await send("Network.emulateNetworkConditions", {
   offline: false,
   latency: 0,
@@ -153,6 +184,42 @@ const analysis = await evaluate(`({
   hasHydraTraversal: document.body.innerText.includes('incoming · 6 hops')
 })`);
 
+let staleState: unknown = null;
+if (verifyStaleState) {
+  const originalEnd = await evaluate(`document.querySelectorAll('input[type="datetime-local"]')[1]?.value`);
+  if (typeof originalEnd !== "string") {
+    throw new Error("Exposure-window end input was not found.");
+  }
+  const changedEnd = new Date(Date.parse(`${originalEnd}Z`) + 3_600_000).toISOString().slice(0, 23);
+  await evaluate(`(() => {
+    const end = document.querySelectorAll('input[type="datetime-local"]')[1];
+    if (!(end instanceof HTMLInputElement)) throw new Error('Exposure-window end input was not found.');
+    const valueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+    if (!valueSetter) throw new Error('Native input value setter was not found.');
+    valueSetter.call(end, ${JSON.stringify(changedEnd)});
+    end.dispatchEvent(new Event('input', { bubbles: true }));
+    end.dispatchEvent(new Event('change', { bubbles: true }));
+    return end.value;
+  })()`);
+  await waitFor("document.body.innerText.includes('Analysis window changed')");
+  staleState = await evaluate(`({
+    banner: document.body.innerText.includes('Analysis window changed'),
+    checkDisabled: document.querySelector('.secondary-button')?.disabled === true,
+    staleNote: document.body.innerText.includes('Re-run analysis for the edited window.')
+  })`);
+  await evaluate(`(() => {
+    const end = document.querySelectorAll('input[type="datetime-local"]')[1];
+    if (!(end instanceof HTMLInputElement)) throw new Error('Exposure-window end input was not found.');
+    const valueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+    if (!valueSetter) throw new Error('Native input value setter was not found.');
+    valueSetter.call(end, ${JSON.stringify(originalEnd)});
+    end.dispatchEvent(new Event('input', { bubbles: true }));
+    end.dispatchEvent(new Event('change', { bubbles: true }));
+    return end.value;
+  })()`);
+  await waitFor("!document.body.innerText.includes('Analysis window changed')");
+}
+
 await evaluate(`(() => {
   const select = document.querySelector('.check-block select');
   if (!(select instanceof HTMLSelectElement)) throw new Error('Application check select was not found.');
@@ -189,21 +256,42 @@ const evidence = {
   appUrl,
   mode,
   viewport: { width: viewportWidth, height: viewportHeight },
+  homepage,
   initial,
   loadingState,
+  slowState,
   analysis,
+  staleState,
   negativeCase,
   browserErrors,
+  httpFailures,
   passed:
+    Boolean((homepage as { hasHeadline?: boolean }).hasHeadline) &&
+    Boolean((homepage as { hasHydraExplanation?: boolean }).hasHydraExplanation) &&
+    Boolean((homepage as { hasCuratedScope?: boolean }).hasCuratedScope) &&
+    (homepage as { primaryActionHref?: string }).primaryActionHref === "/incident" &&
     Boolean((initial as { hasEmptyState?: boolean }).hasEmptyState) &&
     Boolean((loadingState as { hasLoadingMessage?: boolean }).hasLoadingMessage) &&
     Boolean((loadingState as { analyzeButtonDisabled?: boolean }).analyzeButtonDisabled) &&
+    (!verifySlowState || (
+      (slowState as { hasSlowMessage?: boolean }).hasSlowMessage === true &&
+      (slowState as { analysisStillAtomic?: boolean }).analysisStillAtomic === true
+    )) &&
     (analysis as { exposedCount?: string }).exposedCount === "1" &&
     ((analysis as { graphNodes?: number }).graphNodes ?? 0) >= 6 &&
+    (!verifyStaleState || (
+      (staleState as { banner?: boolean }).banner === true &&
+      (staleState as { checkDisabled?: boolean }).checkDisabled === true &&
+      (staleState as { staleNote?: boolean }).staleNote === true
+    )) &&
     (negativeCase as { message?: string }).message === "No supporting dependency path found." &&
     browserErrors.length === 0,
 };
 await mkdir(outputDirectory, { recursive: true });
+if (typeof homepageScreenshot.data !== "string") {
+  throw new Error("Chromium did not return homepage screenshot data.");
+}
+await writeFile(`${outputDirectory}/homepage.png`, Buffer.from(homepageScreenshot.data, "base64"));
 await writeFile(`${outputDirectory}/incident-analysis.png`, Buffer.from(screenshotData, "base64"));
 await writeFile(`${outputDirectory}/result.json`, `${JSON.stringify(evidence, null, 2)}\n`);
 console.log(JSON.stringify(evidence, null, 2));
@@ -255,8 +343,12 @@ async function writeEvidence(states: Record<string, unknown>): Promise<void> {
     viewport: { width: viewportWidth, height: viewportHeight },
     ...states,
     browserErrors,
+    httpFailures,
   };
   await mkdir(outputDirectory, { recursive: true });
+  if (typeof homepageScreenshot.data === "string") {
+    await writeFile(`${outputDirectory}/homepage.png`, Buffer.from(homepageScreenshot.data, "base64"));
+  }
   await writeFile(`${outputDirectory}/incident-analysis.png`, Buffer.from(screenshot.data, "base64"));
   await writeFile(`${outputDirectory}/result.json`, `${JSON.stringify(evidence, null, 2)}\n`);
   console.log(JSON.stringify(evidence, null, 2));

@@ -1,0 +1,17 @@
+/* Radius. Structural regions of the console (sidebar, workspace, panel bands)
+   are separated by hairlines and have NO radius — they are the chassis. Radius
+   is reserved for objects that sit on top of the chassis. */
+:root {
+  --radius-none: 0px;      /* structural panels, summary band, graph row */
+  --radius-xs: 3px;        /* severity badge, status label, edge label chip */
+  --radius-sm: 5px;        /* (src) inputs, selects, buttons, icon chips */
+  --radius-md: 7px;        /* graph nodes, chain nodes, application rows */
+  --radius-lg: 10px;       /* floating cards, check-result blocks, banners */
+  --radius-xl: 14px;       /* dialogs, overlays */
+  --radius-pill: 999px;    /* status dots, legend keys, count pills */
+
+  --border-hairline: 1px;
+  --border-emphasis: 2px;
+  --border-rail: 3px;      /* left status rail on rows and result blocks */
+  --border-node-rail: 4px; /* (src) left rail on application graph nodes */
+}

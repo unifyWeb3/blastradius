@@ -1,0 +1,18 @@
+/* Elevation. A dark console gets depth from surface value and hairlines first;
+   shadow is a last resort for things that genuinely float above the canvas.
+   No coloured glows, no neon. */
+:root {
+  --shadow-none: none;
+  --shadow-node: 0 1px 0 rgba(0, 0, 0, 0.4), 0 6px 14px rgba(0, 0, 0, 0.28);
+  --shadow-raised: 0 8px 24px rgba(0, 0, 0, 0.36);
+  --shadow-overlay: 0 18px 48px rgba(0, 0, 0, 0.55);
+  --shadow-inset-track: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  /* selection rings — drawn, not glowed */
+  --ring-selected: 0 0 0 1px var(--surface-panel), 0 0 0 2px var(--graph-selection-ring);
+  --ring-focus: 0 0 0 2px var(--bg-app), 0 0 0 4px var(--focus-ring);
+
+  /* protection: fades that keep a scrolling region legible at its edges */
+  --fade-right: linear-gradient(90deg, transparent, var(--surface-panel));
+  --fade-left: linear-gradient(270deg, transparent, var(--surface-panel));
+}

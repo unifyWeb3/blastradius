@@ -1,0 +1,54 @@
+<!-- @dsCard group="Components" viewport="700x380" name="Evidence primitives" subtitle="Summary metrics, root rows, chain nodes, evidence rows, timeline bars" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Evidence</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>body{margin:0;background:var(--bg-app);padding-bottom:14px}.band{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border-subtle)}.cols{display:grid;grid-template-columns:250px 1fr;gap:22px;padding:14px 18px 0}.stack{display:flex;flex-direction:column;gap:8px}.chain{display:flex;align-items:center;gap:6px;overflow:hidden}</style>
+</head><body><div id="root"></div>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const NS = window.BlastRadiusDesignSystem_6e5e22;
+const { SummaryMetric, ApplicationRow, ChainNode, EvidenceRow, TimelineRow, Kicker, Icon } = NS;
+const EvidenceCard = () => {
+  const [sel, setSel] = React.useState("merchant");
+  return (
+    <div>
+      <div className="band">
+        <SummaryMetric label="Exposed applications" value="1" tone="danger" hint="affectedRoots[]" />
+        <SummaryMetric label="Topological candidates" value="2" hint="candidateRoots[]" />
+        <SummaryMetric label="HydraDB query" value="50" unit="ms" hint="timing.hydraQueryMs" />
+        <SummaryMetric label="Traversal" value="incoming" hint="6 hop cap" divider={false} />
+      </div>
+      <div className="cols">
+        <div className="stack">
+          <Kicker>Root inventory</Kicker>
+          <ApplicationRow name="Merchant Web" status="exposed" hopCount={3} selected={sel==="merchant"} onSelect={()=>setSel("merchant")} />
+          <ApplicationRow name="Admin Portal" status="not_exposed" hopCount={2} selected={sel==="admin"} onSelect={()=>setSel("admin")} />
+          <ApplicationRow name="Checkout API" status="unresolved" hopCount={4} selected={sel==="checkout"} onSelect={()=>setSel("checkout")} />
+          <Kicker style={{marginTop:6}}>Timeline bars</Kicker>
+          <TimelineRow label="Compromise" tone="compromise" left={95} width={4} />
+          <TimelineRow label="Dependency 1" left={0} width={100} />
+          <TimelineRow label="Effective" tone="effective" left={95} width={4} />
+          <TimelineRow label="Dependency 2" tone="unresolved" />
+        </div>
+        <div className="stack">
+          <Kicker>Ordered evidence chain</Kicker>
+          <div className="chain">
+            <ChainNode index={1} role="application" name="Merchant Web" detail="github.com/acme/merchant-web" />
+            <Icon name="arrow-right" size={16} style={{color:"var(--text-faint)"}} />
+            <ChainNode index={2} name="@acme/commerce-sdk@3.4.0" detail="pkg:npm/@acme/commerce-sdk@3.4.0" />
+            <Icon name="arrow-right" size={16} style={{color:"var(--text-faint)"}} />
+            <ChainNode index={3} role="compromised" name="ua-parser-js@0.7.29" detail="pkg:npm/ua-parser-js@0.7.29" />
+          </div>
+          <div style={{marginTop:4,borderTop:"1px solid var(--border-subtle)"}}>
+            <EvidenceRow evidence="merchant-web package-lock.json resolved @acme/commerce-sdk@3.4.0" interval="Oct 01, 2021, 12:00:00 AM UTC → Oct 23, 2021, 12:00:00 AM UTC" />
+            <EvidenceRow evidence="@acme/identity-sdk@2.7.1 retained a dependency edge after the compromise window." />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+ReactDOM.createRoot(document.getElementById("root")).render(<EvidenceCard />);
+</script></body></html>

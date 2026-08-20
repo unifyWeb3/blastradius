@@ -1,0 +1,24 @@
+<!-- @dsCard group="Motion" viewport="700x200" name="Interaction states" subtitle="Hover lifts the surface, press deepens it, focus draws a teal ring — no scaling, no bounce" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:14px 18px;background:var(--bg-app);color:var(--text-primary);font-family:var(--font-sans)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:8px}
+.k{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
+.mono{font-family:var(--font-mono)}
+.note{font-size:10.5px;color:var(--text-muted);line-height:1.45}
+.ic{width:20px;height:20px;filter:invert(1);opacity:.62}
+table{border-collapse:collapse;width:100%}
+td,th{text-align:left;padding:4px 12px 4px 0;font-size:10.5px;color:var(--text-secondary);font-weight:400;vertical-align:top}
+th{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);padding-bottom:6px}
+td.m{font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}</style></head><body>
+<table>
+<tr><th>State</th><th>Treatment</th><th>Token</th></tr>
+<tr><td>Rest</td><td>transparent row / raised object</td><td class="m">--surface-raised</td></tr>
+<tr><td>Hover</td><td>surface steps up one value; no movement</td><td class="m">--surface-hover · 130ms</td></tr>
+<tr><td>Press</td><td>surface steps up again; primary button darkens to red-800</td><td class="m">--surface-active</td></tr>
+<tr><td>Focus</td><td>2px teal outline, 2px offset</td><td class="m">--focus-ring</td></tr>
+<tr><td>Selected</td><td>raised surface + left rail in the row&rsquo;s status colour; graph node gets the teal ring</td><td class="m">--ring-selected</td></tr>
+<tr><td>Disabled</td><td>opacity 0.45, cursor not-allowed, no colour change</td><td class="m">0.45</td></tr>
+<tr><td>Busy</td><td>1s linear spinner in teal; the label names the real query</td><td class="m">--spin-duration</td></tr>
+</table>
+<p class="note" style="margin:11px 0 0">Only two things loop: the analysis spinner and the selected-path edge dash. Everything else is a 130&ndash;200ms colour or surface transition on <span class="mono" style="font-size:10px">--ease-standard</span>. <span class="mono" style="font-size:10px">prefers-reduced-motion</span> stops both loops.</p>
+</body></html>

@@ -20,3 +20,4 @@ investigation/external/
 # Superseded browser captures; the final desktop/mobile/error artifacts remain.
 docs/validation/browser-smoke/
 docs/validation/browser-smoke-mobile/
+docs/validation/browser-smoke-production-clean/

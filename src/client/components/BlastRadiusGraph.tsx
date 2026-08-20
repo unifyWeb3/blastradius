@@ -24,6 +24,8 @@ export const BlastRadiusGraph = ({ analysis, selectedPath, onSelectApplication }
         nodes={layout.nodes}
         edges={layout.edges}
         onNodeClick={handleNodeClick}
+        aria-label="Directed dependency graph returned by HydraDB"
+        colorMode="dark"
         fitView
         fitViewOptions={{ padding: 0.2, minZoom: 0.3, maxZoom: 1.15 }}
         minZoom={0.25}
@@ -33,8 +35,8 @@ export const BlastRadiusGraph = ({ analysis, selectedPath, onSelectApplication }
         elementsSelectable
         proOptions={{ hideAttribution: true }}
       >
-        <Background variant={BackgroundVariant.Dots} gap={18} size={1} color="#ccd3d0" />
-        <Controls showInteractive={false} position="bottom-left" />
+        <Background variant={BackgroundVariant.Dots} gap={18} size={1} color="var(--graph-grid)" />
+        <Controls aria-label="Graph zoom controls" showInteractive={false} position="bottom-left" />
       </ReactFlow>
     </div>
   );

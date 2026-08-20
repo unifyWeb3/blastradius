@@ -1,0 +1,30 @@
+<!-- @dsCard group="Colors" viewport="700x168" name="Status semantics in use" subtitle="Five verdicts that must never collapse into one another" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:14px 18px;background:var(--bg-app);color:var(--text-primary);font-family:var(--font-sans)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:8px}
+.sw{display:flex;flex-direction:column;justify-content:flex-end;height:58px;padding:6px 7px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,.06)}
+.sw b{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.sw i{font-family:var(--font-mono);font-size:8px;font-style:normal;opacity:.72;line-height:1.2;margin-top:2px}
+.k{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
+.mono{font-family:var(--font-mono)}
+.ramp{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.note{font-size:10.5px;color:var(--text-muted);line-height:1.45}
+table{border-collapse:collapse;width:100%}
+td,th{text-align:left;padding:4px 10px 4px 0;font-size:10.5px;color:var(--text-secondary);font-weight:400}
+th{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);padding-bottom:6px}
+td.m{font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}</style></head><body>
+<div class="col" style="gap:7px">
+<div class="row" style="gap:8px">
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:var(--radius-xs);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--status-exposed);background:var(--status-exposed-bg);border:1px solid var(--status-exposed-border)">Exposed in window</span>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:var(--radius-xs);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--status-outside-window);background:var(--status-outside-window-bg);border:1px solid var(--status-outside-window-border)">Outside window</span>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:var(--radius-xs);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--status-unresolved);background:var(--status-unresolved-bg);background-image:var(--status-unresolved-hatch);border:1px solid var(--status-unresolved-border)">Temporal evidence incomplete</span>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:var(--radius-xs);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--status-healthy);background:var(--status-healthy-bg);border:1px solid var(--status-healthy-border)">No supporting path</span>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:var(--radius-xs);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--red-700)">Critical</span>
+</div>
+<table style="margin-top:6px"><tr><th>Verdict</th><th>DTO source</th><th>Means</th></tr>
+<tr><td style="color:var(--status-exposed)">Exposed in window</td><td class="m">temporal.status: exposed</td><td>Path exists and all intervals overlap</td></tr>
+<tr><td style="color:var(--status-outside-window)">Outside window</td><td class="m">reason: no_common_overlap</td><td>Path exists, timing does not overlap</td></tr>
+<tr><td style="color:var(--status-unresolved)">Temporal evidence incomplete</td><td class="m">reason: missing_dependency_validity</td><td>Cannot be decided either way</td></tr>
+<tr><td style="color:var(--status-healthy)">No supporting path</td><td class="m">reason: no_supporting_dependency_path</td><td>No topological path at all</td></tr></table>
+</div>
+</body></html>

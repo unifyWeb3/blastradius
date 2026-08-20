@@ -32,7 +32,7 @@ Without HydraDB, BlastRadius loses the core reverse transitive closure and hydra
 
 - Public GitHub repository: <https://github.com/unifyWeb3/blastradius>
 - Demo video: PENDING
-- Deployed demo, if provided: PENDING
+- Deployed demo, if provided: PENDING — Railway project exists but service creation is currently blocked by the account free-plan resource limit.
 - Team member list: PENDING
 
 ## Honest Scope Statement

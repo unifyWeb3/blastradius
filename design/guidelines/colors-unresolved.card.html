@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x176" name="Signal · unresolved" subtitle="Steel + 135° hatch — the state the current build conflates with outside-window" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:14px 18px;background:var(--bg-app);color:var(--text-primary);font-family:var(--font-sans)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:8px}
+.sw{display:flex;flex-direction:column;justify-content:flex-end;height:58px;padding:6px 7px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,.06)}
+.sw b{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.sw i{font-family:var(--font-mono);font-size:8px;font-style:normal;opacity:.72;line-height:1.2;margin-top:2px}
+.k{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
+.mono{font-family:var(--font-mono)}
+.ramp{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.note{font-size:10.5px;color:var(--text-muted);line-height:1.45}
+table{border-collapse:collapse;width:100%}
+td,th{text-align:left;padding:4px 10px 4px 0;font-size:10.5px;color:var(--text-secondary);font-weight:400}
+th{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);padding-bottom:6px}
+td.m{font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}</style></head><body>
+<div class="row" style="align-items:stretch;gap:10px">
+<div class="ramp" style="grid-template-columns:repeat(4,1fr);flex:1">
+<div class="sw" style="background:var(--steel-300);color:#16242D"><b>300</b><i>#A7C6D8</i></div><div class="sw" style="background:var(--steel-400);color:#16242D"><b>400</b><i>#89B0C6</i></div><div class="sw" style="background:var(--steel-500);color:#16242D"><b>500</b><i>#6E9BB8</i></div><div class="sw" style="background:var(--steel-700);color:#fff"><b>700</b><i>#3C6580</i></div>
+</div>
+<div style="flex:1;height:58px;border-radius:var(--radius-sm);background:var(--status-unresolved-bg);background-image:var(--status-unresolved-hatch);border:1px dashed var(--status-unresolved);display:grid;place-items:center">
+<span class="mono" style="font-size:9.5px;color:var(--status-unresolved)">--status-unresolved-hatch</span></div>
+</div>
+<p class="note" style="margin:11px 0 0">Never green, never amber, never grey-as-disabled. Steel plus hatching plus a question glyph reads &ldquo;unknown&rdquo; in colour, in pattern, and in greyscale — three redundant channels, because <span class="mono" style="font-size:10px;color:var(--status-unresolved)">missing_dependency_validity</span> must never be mistaken for safe.</p>
+</body></html>

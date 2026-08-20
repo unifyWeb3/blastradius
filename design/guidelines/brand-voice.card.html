@@ -1,0 +1,23 @@
+<!-- @dsCard group="Brand" viewport="700x210" name="Voice · verdict wording" subtitle="Contract copy. These strings are the product; do not rewrite them." -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>body{margin:0;padding:14px 18px;background:var(--bg-app);color:var(--text-primary);font-family:var(--font-sans)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:8px}
+.k{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
+.mono{font-family:var(--font-mono)}
+.note{font-size:10.5px;color:var(--text-muted);line-height:1.45}
+.ic{width:20px;height:20px;filter:invert(1);opacity:.62}
+table{border-collapse:collapse;width:100%}
+td,th{text-align:left;padding:4px 12px 4px 0;font-size:10.5px;color:var(--text-secondary);font-weight:400;vertical-align:top}
+th{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);padding-bottom:6px}
+td.m{font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}</style></head><body>
+<table>
+<tr><th>Situation</th><th>Exact copy</th></tr>
+<tr><td>Path overlaps window</td><td style="color:var(--status-exposed)">Exposed in window &nbsp;<span class="m">/ Exposed · {n} hop dependency path</span></td></tr>
+<tr><td>Path exists, no overlap</td><td style="color:var(--status-outside-window)">Outside window &nbsp;<span class="m">/ Not exposed in window · Path has no common temporal overlap.</span></td></tr>
+<tr><td>Validity interval missing</td><td style="color:var(--status-unresolved)">Temporal evidence incomplete &nbsp;<span class="m">/ Temporal result unresolved</span></td></tr>
+<tr><td>No topological path</td><td style="color:var(--status-healthy)">Not exposed &nbsp;<span class="m">/ No supporting dependency path found.</span></td></tr>
+<tr><td>Before a query</td><td>Analysis pending &nbsp;<span class="m">/ No graph result / No path selected</span></td></tr>
+<tr><td>During a query</td><td>Querying HydraDB &nbsp;<span class="m">/ Incoming SSpaths traversal</span></td></tr>
+<tr><td>Engine failure</td><td style="color:var(--status-error)">HydraDB could not complete the graph operation.</td></tr>
+</table>
+</body></html>

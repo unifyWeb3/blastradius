@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Core controls" subtitle="Button variants, window fields, application select, kickers" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Core controls</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>body{margin:0;padding:16px 18px;background:var(--bg-app)}.grid{display:grid;grid-template-columns:1fr 1fr 200px;gap:20px}.stack{display:flex;flex-direction:column;gap:9px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}</style>
+</head><body><div id="root"></div>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { Button, Field, Select, Kicker, Icon } = window.BlastRadiusDesignSystem_6e5e22;
+const CoreCard = () => (
+  <div className="grid">
+    <div className="stack">
+      <Kicker>Actions</Kicker>
+      <Button variant="primary" icon="radar" block>Analyze blast radius</Button>
+      <Button variant="secondary" icon="search-check" block>Check exposure</Button>
+      <div className="row">
+        <Button variant="ghost" size="sm" icon="refresh-cw">Re-run</Button>
+        <Button variant="quiet" size="sm" icon="arrow-up-right">OSV record</Button>
+      </div>
+      <div className="row">
+        <Button variant="primary" size="sm" loading>Querying</Button>
+        <Button variant="secondary" size="sm" icon="search-check" disabled>Disabled</Button>
+      </div>
+    </div>
+    <div className="stack">
+      <Kicker>Window fields</Kicker>
+      <Field label="UTC start" inputProps={{ defaultValue: "2021-10-22T12:15:21.378" }} />
+      <Field label="UTC end" invalid hint="End must be after start" inputProps={{ defaultValue: "2021-10-22T09:00:00.000" }} />
+    </div>
+    <div className="stack">
+      <Kicker>Selector</Kicker>
+      <Select defaultValue="app:analytics-worker" options={[{value:"app:admin-portal",label:"Admin Portal"},{value:"app:analytics-worker",label:"Analytics Worker"},{value:"app:merchant-web",label:"Merchant Web"}]} />
+      <Kicker style={{marginTop:8}}>Glyphs</Kicker>
+      <div className="row" style={{color:"var(--text-secondary)"}}>
+        {["shield-alert","radar","search-check","database","clock-3","git-branch","box","package","file-check","waypoints","circle-question-mark","circle-slash-2"].map(n => <Icon key={n} name={n} size={17} />)}
+      </div>
+    </div>
+  </div>
+);
+ReactDOM.createRoot(document.getElementById("root")).render(<CoreCard />);
+</script></body></html>

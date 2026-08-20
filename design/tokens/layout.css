@@ -1,0 +1,23 @@
+/* Layout dimensions. Carried from the source implementation so the redesign is a
+   drop-in presentation layer: same chassis, new surface. */
+:root {
+  --topbar-height: 58px;
+  --sidebar-width: 286px;
+  --sidebar-width-md: 250px;
+  --panel-toolbar-height: 64px;
+  --summary-band-height: 92px;
+  --graph-row-min-height: 490px;
+  --graph-canvas-height: 426px;
+  --graph-canvas-height-sm: 380px;
+  --root-inventory-width: 270px;
+  --root-inventory-width-md: 230px;
+  --chain-node-width: 155px;
+  --chain-node-width-sm: 135px;
+  --graph-node-width: 190px;
+  --control-height: 36px;
+  --button-height: 38px;
+  --timeline-label-width: 82px;
+
+  --breakpoint-md: 1100px;
+  --breakpoint-sm: 820px;
+}
